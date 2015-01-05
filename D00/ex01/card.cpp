@@ -6,12 +6,13 @@
 /*   By: vplotton <vplotton@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/01/05 13:12:14 by vplotton          #+#    #+#             */
-/*   Updated: 2015/01/05 13:41:16 by vplotton         ###   ########.fr       */
+/*   Updated: 2015/01/05 14:57:14 by vplotton         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "card.hpp"
 #include <iostream>
+#include <iomanip>
 
 Card::Card()
 {
@@ -54,14 +55,7 @@ void	printStringShort(std::string field)
 	}
 	else
 	{
-		std::cout << field;
-		if (field.size() < 10)
-		{
-			for (int i = 0 ; i < (10 - (int)field.size()) ; ++i)
-			{
-				std::cout << " ";
-			}
-		}
+		std::cout << std::left << std::setw(10) << field;
 	}
 }
 
@@ -71,8 +65,7 @@ void	Card::printSearchShort(int i)
 	{
 		return ;
 	}
-	std::cout << i;
-	std::cout << "         ";
+	std::cout << std::left << std::setw(10) << i;
 	printStringShort(m_firstName);
 	printStringShort(m_lastName);
 	printStringShort(m_nickName);
