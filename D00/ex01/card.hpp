@@ -6,40 +6,38 @@
 /*   By: vplotton <vplotton@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/01/05 10:49:24 by vplotton          #+#    #+#             */
-/*   Updated: 2015/01/05 12:28:42 by vplotton         ###   ########.fr       */
+/*   Updated: 2015/01/05 13:41:13 by vplotton         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef CARD_HPP
 # define CARD_HPP
 
+#include <string>
 
-namespace std
+class Card
 {
-	class Card
-	{
-		public:
-			Card();
-			~Card();
-			void	add();
-			void	printSearchShort();
-			void	printSearchResult();
-			boolean	isSet();
+	public:
+		Card();
+		~Card();
+		void	add();
+		void	printSearchShort(int i);
+		void	printSearchResult();
+		bool	isSet();
 
-		private:
-			boolean	m_set;
-			string	m_firstName;
-			string	m_lastName;
-			string	m_nickName;
-			string	m_login;
-			string	m_postalAddress;
-			string	m_emailAddress;
-			string	m_phoneNumber;
-			string	m_birthdayDate;
-			string	m_favoriteMeal;
-			string	m_underwearColor;
-			string	m_darkestSecret;
-	};
-}
+	private:
+		bool	m_set;
+		std::string	m_firstName;
+		std::string	m_lastName;
+		std::string	m_nickName;
+		std::string	m_login;
+		std::string	m_postalAddress;
+		std::string	m_emailAddress;
+		std::string	m_phoneNumber;
+		std::string	m_birthdayDate;
+		std::string	m_favoriteMeal;
+		std::string	m_underwearColor;
+		std::string	m_darkestSecret;
+};
 
 #endif /* !CARD_HPP */

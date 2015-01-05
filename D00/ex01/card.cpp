@@ -1,4 +1,17 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   card.cpp                                           :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: vplotton <vplotton@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2015/01/05 13:12:14 by vplotton          #+#    #+#             */
+/*   Updated: 2015/01/05 13:41:16 by vplotton         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "card.hpp"
+#include <iostream>
 
 Card::Card()
 {
@@ -32,19 +45,19 @@ void	Card::add()
 	getFieldStream(m_darkestSecret, "darkest secret");
 }
 
-void	printStringShort(string field)
+void	printStringShort(std::string field)
 {
 	std::cout << "|";
 	if (field.size() > 10)
 	{
-		std::cout << field.resize(9) << ".";
+		std::cout << field.substr(0, 9) << ".";
 	}
 	else
 	{
 		std::cout << field;
 		if (field.size() < 10)
 		{
-			for (int i = 0 ; i < (10 - field.size()) ; ++i)
+			for (int i = 0 ; i < (10 - (int)field.size()) ; ++i)
 			{
 				std::cout << " ";
 			}
@@ -54,12 +67,16 @@ void	printStringShort(string field)
 
 void	Card::printSearchShort(int i)
 {
+	if (m_set == false)
+	{
+		return ;
+	}
 	std::cout << i;
 	std::cout << "         ";
 	printStringShort(m_firstName);
 	printStringShort(m_lastName);
 	printStringShort(m_nickName);
-	std::endl;
+	std::cout << std::endl;
 }
 
 void	printResultLine(std::string field)
@@ -69,6 +86,11 @@ void	printResultLine(std::string field)
 
 void	Card::printSearchResult()
 {
+	if (m_set == false)
+	{
+		std::cout << "No data." << std::endl;
+		return ;
+	}
 	printResultLine(m_firstName);
 	printResultLine(m_lastName);
 	printResultLine(m_nickName);
@@ -82,7 +104,7 @@ void	Card::printSearchResult()
 	printResultLine(m_darkestSecret);
 }
 
-boolean	Card::isSet()
+bool	Card::isSet()
 {
 	return (m_set);
 }
