@@ -6,7 +6,7 @@
 /*   By: vplotton <vplotton@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/01/05 13:12:23 by vplotton          #+#    #+#             */
-/*   Updated: 2015/01/05 13:41:18 by vplotton         ###   ########.fr       */
+/*   Updated: 2015/01/05 15:28:59 by vplotton         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,10 +27,10 @@ void	PhoneBook::add()
 	
 	for (int i = 0 ; i < 8 ; ++i)
 	{
-		if (m_cards[i].isSet() == false)
+		if (m_contacts[i].isSet() == false)
 		{
 			allSet = false;
-			m_cards[i].add();
+			m_contacts[i].add();
 			break ;
 		}
 	}
@@ -47,13 +47,13 @@ void	PhoneBook::search()
 	std::cout << "index     |first name|last name |nickname" << std::endl;
 	for (int i = 0 ; i < 8 ; ++i)
 	{
-		m_cards[i].printSearchShort(i);
+		m_contacts[i].printSearchShort(i);
 	}
 	std::cout << "Choose an index to see full information: ";
 	std::cin >> arg;
 	if (arg >= 0 && arg < 8)
 	{
-		m_cards[arg].printSearchResult();
+		m_contacts[arg].printSearchResult();
 	}
 	else
 	{

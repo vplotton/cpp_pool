@@ -6,14 +6,14 @@
 /*   By: vplotton <vplotton@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/01/05 10:02:43 by vplotton          #+#    #+#             */
-/*   Updated: 2015/01/05 13:41:15 by vplotton         ###   ########.fr       */
+/*   Updated: 2015/01/05 15:29:33 by vplotton         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef PHONEBOOK_HPP
 # define PHONEBOOK_HPP
 
-#include "card.hpp"
+#include "contact.hpp"
 
 class PhoneBook
 {
@@ -24,7 +24,7 @@ class PhoneBook
 		void	add();
 
 	private:
-		Card m_cards[8];
+		Contact m_contacts[8];
 };
 
 #endif /* !PHONEBOOK_HPP */

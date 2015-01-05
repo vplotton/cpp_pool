@@ -1,25 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   card.hpp                                           :+:      :+:    :+:   */
+/*   contact.hpp                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: vplotton <vplotton@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2015/01/05 10:49:24 by vplotton          #+#    #+#             */
-/*   Updated: 2015/01/05 13:41:13 by vplotton         ###   ########.fr       */
+/*   Created: 2015/01/05 15:28:03 by vplotton          #+#    #+#             */
+/*   Updated: 2015/01/05 15:28:05 by vplotton         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef CARD_HPP
-# define CARD_HPP
+#ifndef CONTACT_HPP
+# define CONTACT_HPP
 
 #include <string>
 
-class Card
+class Contact
 {
 	public:
-		Card();
-		~Card();
+		Contact();
+		~Contact();
 		void	add();
 		void	printSearchShort(int i);
 		void	printSearchResult();
@@ -40,4 +40,4 @@ class Card
 		std::string	m_darkestSecret;
 };
 
-#endif /* !CARD_HPP */
+#endif /* !CCONTACT_HPP */

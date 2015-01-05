@@ -1,25 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   card.cpp                                           :+:      :+:    :+:   */
+/*   contact.cpp                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: vplotton <vplotton@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2015/01/05 13:12:14 by vplotton          #+#    #+#             */
-/*   Updated: 2015/01/05 14:57:14 by vplotton         ###   ########.fr       */
+/*   Created: 2015/01/05 15:27:45 by vplotton          #+#    #+#             */
+/*   Updated: 2015/01/05 15:29:44 by vplotton         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "card.hpp"
+#include "contact.hpp"
 #include <iostream>
 #include <iomanip>
 
-Card::Card()
+Contact::Contact()
 {
 	m_set = false;
 }
 
-Card::~Card()
+Contact::~Contact()
 {
 }
 
@@ -29,7 +29,7 @@ void	getFieldStream(std::string &field, std::string fieldName)
 	std::cin >> field;
 }
 
-void	Card::add()
+void	Contact::add()
 {
 	m_set = true;
 	std::cout << "Please fill the following info:" << std::endl;
@@ -59,7 +59,7 @@ void	printStringShort(std::string field)
 	}
 }
 
-void	Card::printSearchShort(int i)
+void	Contact::printSearchShort(int i)
 {
 	if (m_set == false)
 	{
@@ -77,7 +77,7 @@ void	printResultLine(std::string field)
 	std::cout << field << std::endl;
 }
 
-void	Card::printSearchResult()
+void	Contact::printSearchResult()
 {
 	if (m_set == false)
 	{
@@ -97,7 +97,7 @@ void	Card::printSearchResult()
 	printResultLine(m_darkestSecret);
 }
 
-bool	Card::isSet()
+bool	Contact::isSet()
 {
 	return (m_set);
 }
