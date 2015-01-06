@@ -14,7 +14,7 @@ CC  = g++
 RM  = rm -rf
 NAME    = megaphone
 CFLAGS  = -Wall -Wextra -Werror
-OBJ = $(SRC:.c=.o)
+OBJ = $(SRC:.cpp=.o)
 SRC = megaphone.cpp
 
 all:        $(NAME)
