@@ -1,7 +1,7 @@
 #include "Brain.hpp"
 #include <sstream>
 
-Brain::Brain() : m_address(static_cast<const void*>(this))
+Brain::Brain()
 {
 }
 
@@ -11,10 +11,11 @@ Brain::~Brain()
 
 std::string	Brain::identify() const
 {
+	void const *address = static_cast<const void*>(this);
 	std::ostringstream stringStream;
 	std::string output("");
 	
-	stringStream << m_address;
+	stringStream << address;
 	output += stringStream.str();
 
 	return (output);

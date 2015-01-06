@@ -9,9 +9,6 @@ class Brain
 		Brain();
 		~Brain();
 		std::string identify() const;
-
-	private:
-		const void *m_address;
 };
 
 #endif /* ~BRAIN_HPP */

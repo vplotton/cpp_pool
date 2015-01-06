@@ -10,7 +10,7 @@ class Human
 		Human();
 		~Human();
 		std::string identify() const;
-		Brain	getBrain();
+		Brain const &getBrain();
 
 	private:
 		Brain const m_brain;
