@@ -6,12 +6,13 @@
 /*   By: vplotton <vplotton@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/01/05 13:12:23 by vplotton          #+#    #+#             */
-/*   Updated: 2015/01/05 15:28:59 by vplotton         ###   ########.fr       */
+/*   Updated: 2015/01/05 16:46:02 by vplotton         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "phonebook.hpp"
 #include <iostream>
+#include <cstdlib>
 
 PhoneBook::PhoneBook()
 {
@@ -42,7 +43,8 @@ void	PhoneBook::add()
 
 void	PhoneBook::search()
 {
-	int		arg;
+	std::string	arg;
+	int			indexContact;
 
 	std::cout << "index     |first name|last name |nickname" << std::endl;
 	for (int i = 0 ; i < 8 ; ++i)
@@ -51,9 +53,10 @@ void	PhoneBook::search()
 	}
 	std::cout << "Choose an index to see full information: ";
 	std::cin >> arg;
-	if (arg >= 0 && arg < 8)
+	indexContact = std::atoi(arg.c_str());
+	if (indexContact >= 0 && indexContact < 8)
 	{
-		m_contacts[arg].printSearchResult();
+		m_contacts[indexContact].printSearchResult();
 	}
 	else
 	{
