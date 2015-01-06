@@ -46,5 +46,5 @@ void	ZombieEvent::randomChump()
 
 	newZombie.setName(genRandom());
 	newZombie.setType("randomChump");
-	newZombie.annouce();
+	newZombie.announce();
 }

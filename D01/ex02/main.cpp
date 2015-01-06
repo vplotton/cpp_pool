@@ -8,12 +8,12 @@ int	main()
 	Zombie *edgar;
 	
 	zombieWithoutType = zombieCreator.newZombie("ZombieWithoutType");
-	zombieWithoutType->annouce();
+	zombieWithoutType->announce();
 	std::cout << std::endl;
 
 	zombieCreator.setZombieType("intellectual");
 	edgar = zombieCreator.newZombie("edgar");
-	edgar->annouce();
+	edgar->announce();
 	std::cout << std::endl;
 
 	zombieCreator.randomChump();

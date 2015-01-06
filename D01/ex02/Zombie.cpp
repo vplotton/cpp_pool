@@ -18,7 +18,7 @@ Zombie::~Zombie()
 	}
 }
 
-void	Zombie::annouce()
+void	Zombie::announce()
 {
 	std::cout << "<" 
 		<< m_name

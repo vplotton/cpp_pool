@@ -33,7 +33,7 @@ bool	writeToFile(std::ofstream &output, std::string fileName, std::string line)
 	{
 		std::cout << "Could not save to \"" << fileName << "\"";
 		output.close();
-		std::cout << "\"" << fileName << " has been closed." << std::endl;
+		std::cout << "\"" << fileName << "\" has been closed." << std::endl;
 		return (false);
 	}
 	return (true);
