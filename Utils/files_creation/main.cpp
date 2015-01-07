@@ -18,14 +18,14 @@ void	createNames(std::string name, std::string &nameUpper, std::string &nameFirs
 	}
 }
 
-void	createCpp(std::string nameFirstUpper)
+bool	createCpp(std::string nameFirstUpper, std::string directory)
 {
 	std::ofstream	file;
-	std::string	fileName(nameFirstUpper + std::string(".cpp"));
+	std::string	fileName(directory + nameFirstUpper + std::string(".cpp"));
 
 	file.open(fileName.c_str());
 	if (!file.is_open())
-		return ;
+		return false;
 	file << "#include \"" << nameFirstUpper << ".hpp\"" << std::endl;
 	file << std::endl;
 	file << nameFirstUpper << "::" << nameFirstUpper << "()" << std::endl;
@@ -56,16 +56,18 @@ void	createCpp(std::string nameFirstUpper)
 	file << "	return (o);" << std::endl;
 	file << "}" << std::endl;
 	file.close();
+
+	return true;
 }
 
-void	createHeader(std::string nameUpper, std::string nameFirstUpper)
+bool	createHpp(std::string nameUpper, std::string nameFirstUpper, std::string directory)
 {
 	std::ofstream	file;
-	std::string	fileName(nameFirstUpper + std::string(".hpp"));
+	std::string	fileName(directory + nameFirstUpper + std::string(".hpp"));
 
 	file.open(fileName.c_str());
 	if (!file.is_open())
-		return ;
+		return false;
 	file << "#ifndef " << nameUpper << "_HPP" << std::endl;
 	file << "# define " << nameUpper << "_HPP" << std::endl;
 	file << std::endl;
@@ -88,13 +90,20 @@ void	createHeader(std::string nameUpper, std::string nameFirstUpper)
 	file << std::endl;
 	file << "#endif /* !" << nameUpper << "_HPP" << " */" << std::endl;
 	file.close();
+
+	return true;
 }
 
 int	main()
 {
+	std::string	directory;
 	std::string	line;
 	std::string	nameUpper;
 	std::string	nameFirstUpper;
+
+	std::cout << "Enter directory:";
+	std::getline(std::cin, directory);
+	std::cout << "directory [" << directory << "]" << std::endl;
 	while (42)
 	{
 		std::cout << "Enter filename (without extension), or exit: ";
@@ -106,9 +115,18 @@ int	main()
 		}
 		std::cout << "file name [" << line << "]" << std::endl;
 		createNames(line, nameUpper, nameFirstUpper);
-		createHeader(nameUpper, nameFirstUpper);
-		createCpp(nameFirstUpper);
-		std::cout << ".cpp & .hpp created" << std::endl;
+		if (createHpp(nameUpper, nameFirstUpper, directory)
+				&& createCpp(nameFirstUpper, directory))
+		{
+			std::cout << ".cpp & .hpp created" << std::endl;
+		}
+		else
+		{
+			std::cout << "coulnd't create files." << std::endl;
+			std::cout << "Enter directory:";
+			std::getline(std::cin, directory);
+			std::cout << "directory [" << directory << "]" << std::endl;
+		}
 		nameUpper.clear();
 		nameFirstUpper.clear();
 		line.clear();
