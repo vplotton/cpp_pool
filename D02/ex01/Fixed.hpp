@@ -14,17 +14,17 @@ class Fixed
 
 		Fixed & operator=(Fixed const & rhs);
 
-		int	toInt(void) const;
+		int		toInt(void) const;
 		float	toFloat(void) const;
-		int	getRawBits(void) const;
+		int		getRawBits(void) const;
 		void	setRawBits(int const raw);
 
 	private:
-		int		m_fixedPoint;
-		int const 	m_fracBits = 1 << 8;
+		int			m_rawBits;
+		int const 	m_nbFracBits;
 
 };
 
-std::ostream & operator<<(std::ostream & o, Fixed const & i);
+std::ostream & operator<<(std::ostream & o, Fixed const & src);
 
 #endif /* !FIXED_HPP */
