@@ -11,7 +11,8 @@ FragTrap::FragTrap() : ClapTrap()
 FragTrap::FragTrap(std::string name) : ClapTrap(name)
 {
 }
-ClapTrap::ClapTrap(ClapTrap const & src) : ClapTrap(src)
+
+FragTrap::FragTrap(FragTrap const & src) : ClapTrap(src)
 {
 	std::cout
 		<< "A FR4G-TP has been copied, his name is "
@@ -21,7 +22,6 @@ ClapTrap::ClapTrap(ClapTrap const & src) : ClapTrap(src)
 FragTrap::~FragTrap()
 {
 	std::cout << "A FR4G-TP has been destructed, R.I.P " << m_name << std::endl;
-	~ClapTrap();
 }
 
 void	FragTrap::vaulthunter_dot_exe(std::string const & target)
