@@ -3,6 +3,11 @@
 
 ScavTrap::ScavTrap() : ClapTrap()
 {
+	m_energyPoints = 50;
+	m_maxEnergyPoints = 50;
+	m_meleeAttackDamage = 20;
+	m_rangedAttackDamage = 15;
+	m_armorDamageReduction = 3;
 	std::cout
 		<< "A default SC4V-TP has been constructed, the poor robot has no name"
 		<< std::endl;
@@ -10,11 +15,21 @@ ScavTrap::ScavTrap() : ClapTrap()
 
 ScavTrap::ScavTrap(std::string name) : ClapTrap(name)
 {
+	m_energyPoints = 50;
+	m_maxEnergyPoints = 50;
+	m_meleeAttackDamage = 20;
+	m_rangedAttackDamage = 15;
+	m_armorDamageReduction = 3;
 	std::cout << "A SC4V-TP has been constructed, his name is " << name << std::endl;
 }
 
 ScavTrap::ScavTrap(ScavTrap const & src) : ClapTrap(src)
 {
+	m_energyPoints = 50;
+	m_maxEnergyPoints = 50;
+	m_meleeAttackDamage = 20;
+	m_rangedAttackDamage = 15;
+	m_armorDamageReduction = 3;
 	std::cout << "A SC4V-TP has been copied, his name is " << m_name << std::endl;
 }
 
