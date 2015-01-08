@@ -149,9 +149,10 @@ void	FragTrap::beRepaired(unsigned int amount)
 	}
 }
 
-
+/*
 std::ostream & operator<<(std::ostream & o, FragTrap const & i)
 {
 	o << "You. Better. Watch out!";
 	return (o);
 }
+*/

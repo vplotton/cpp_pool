@@ -1,5 +1,5 @@
-#ifndef FRAGTRAP_HPP
-# define FRAGTRAP_HPP
+#ifndef SCAVTRAP_HPP
+# define SCAVTRAP_HPP
 
 #include <iostream>
 #include <string>
@@ -14,7 +14,7 @@ class ScavTrap
 
 		ScavTrap & operator=(ScavTrap const & rhs);
 
-		void	vaulthunter_dot_exe(std::string const & target);
+		void	challengeNewcomer(std::string const & target);
 		void	rangedAttack(std::string const & target);
 		void	meleeAttack(std::string const & target);
 		void	takeDamage(unsigned int amount);
@@ -33,6 +33,6 @@ class ScavTrap
 
 };
 
-std::ostream & operator<<(std::ostream & o, ScavTrap const & i);
+/*std::ostream & operator<<(std::ostream & o, ScavTrap const & i);*/
 
-#endif /* !FRAGTRAP_HPP */
+#endif /* !SCAVTRAP_HPP */

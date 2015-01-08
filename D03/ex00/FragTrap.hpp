@@ -33,6 +33,6 @@ class FragTrap
 
 };
 
-std::ostream & operator<<(std::ostream & o, FragTrap const & i);
+/*std::ostream & operator<<(std::ostream & o, FragTrap const & i);*/
 
 #endif /* !FRAGTRAP_HPP */

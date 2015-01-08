@@ -50,21 +50,22 @@ ScavTrap & ScavTrap::operator=(ScavTrap const & rhs)
 {
 	if (this != &rhs)
 	{
+
 		std::cout << "You assigned me?? You really did that?? 'kay!" << std::endl;
 		/* my implementation, don't forget to change this. */
 	}
 	return (*this);
 }
 
-void	ScavTrap::vaulthunter_dot_exe(std::string const & target)
+void	ScavTrap::challengeNewcomer(std::string const & target)
 {
 	std::string	attackNames[5] =
 	{
-		" at range with spoons",
-		" at melee with a sniper",
-		" it throws Justin Bieber tickets at him",
-		" explodes on him",
-		" can't stop shoooottiiiiiing"
+		" Dance, dance, baby",
+		" Defeat Destroyer of Worlds",
+		" Collect 139,377 brown rocks",
+		" Pilfer lost staff of Mount Schuler",
+		" Retrieve my grand-ma'"
 	};
 
 	if (m_energyPoints > 0)
@@ -73,8 +74,9 @@ void	ScavTrap::vaulthunter_dot_exe(std::string const & target)
 
 		std::cout << "SC4V-TP "
 			<<  m_name
-			<< " attacks "
+			<< " challenges  "
 			<< target
+			<< ": "
 			<< attackNames[std::rand() % 5]
 			<< std::endl;
 	}
@@ -143,9 +145,10 @@ void	ScavTrap::beRepaired(unsigned int amount)
 	}
 }
 
-
+/*
 std::ostream & operator<<(std::ostream & o, ScavTrap const & i)
 {
 	o << "You. Better. Watch out!";
 	return (o);
 }
+*/
