@@ -1,15 +1,15 @@
 #include <iostream>
 #include "FragTrap.hpp"
-#include "FragTrap.hpp"
+#include "ScavTrap.hpp"
 
 int	main()
 {
 	std::cout << "===== TEST CL4P - TP ====" << std::endl;
-	FragTrap *noName = new FragTrap();
+	FragTrap *noNameTrap = new FragTrap();
 	FragTrap fragTrap("Betty");
 
 	std::cout << std::endl;
-	delete noName;
+	delete noNameTrap;
 
 	std::cout << std::endl;
 	fragTrap.vaulthunter_dot_exe("Hector");
@@ -38,13 +38,14 @@ int	main()
 	fragTrap.takeDamage(25);
 	fragTrap.takeDamage(25);
 
+	std::cout << std::endl;
 
 	std::cout << "===== TEST SC4V - TP ====" << std::endl;
-	ScavTrap *noName = new ScavTrap();
-	ScavTrap scavTrap("Betty");
+	ScavTrap *noNameScav = new ScavTrap();
+	ScavTrap scavTrap("Edgar");
 
 	std::cout << std::endl;
-	delete noName;
+	delete noNameScav;
 
 	std::cout << std::endl;
 	scavTrap.challengeNewcomer("Hector");
@@ -66,6 +67,7 @@ int	main()
 	scavTrap.beRepaired(25);
 	scavTrap.beRepaired(25);
 
+	std::cout << std::endl;
 
 	return (0);
 }

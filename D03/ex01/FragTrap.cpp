@@ -126,12 +126,12 @@ void	FragTrap::takeDamage(unsigned int amount)
 		m_hitPoints -= damageTaken;
 		std::cout << "HELP! HELP! I'M HURT! I TOOK "
 			<< damageTaken
-			<< " IN THE FACE!"
+			<< " DAMAGE IN THE FACE!"
 			<< std::endl;
 	}
 	else
 	{
-		std::cout << "I TOOK NO DAMAGE!!!" << std::endl
+		std::cout << "I TOOK NO DAMAGE!!!" << std::endl;
 	}
 }
 

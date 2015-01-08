@@ -115,19 +115,25 @@ void	ScavTrap::takeDamage(unsigned int amount)
 {
 	unsigned int damageTaken;
 
-	damageTaken = amount - m_armorDamageReduction;
+	damageTaken = (amount > m_armorDamageReduction ?
+			amount - m_armorDamageReduction : 0);
+
 
 	if (damageTaken > m_hitPoints)
 	{
 		std::cout << "Oh... sh!t..." << std::endl;
 	}
-	else
+	else if (damageTaken > 0)
 	{
-		m_hitPoints - damageTaken;
+		m_hitPoints -= damageTaken;
 		std::cout << "HELP! HELP! I'M HURT! I TOOK "
 			<< damageTaken
-			<< " IN THE FACE!"
+			<< " DAMAGE IN THE FACE!"
 			<< std::endl;
+	}
+	else
+	{
+		std::cout << "I TOOK NO DAMAGE!!!" << std::endl;
 	}
 }
 
@@ -146,9 +152,9 @@ void	ScavTrap::beRepaired(unsigned int amount)
 }
 
 /*
-std::ostream & operator<<(std::ostream & o, ScavTrap const & i)
-{
-	o << "You. Better. Watch out!";
-	return (o);
-}
-*/
+   std::ostream & operator<<(std::ostream & o, ScavTrap const & i)
+   {
+   o << "You. Better. Watch out!";
+   return (o);
+   }
+   */
