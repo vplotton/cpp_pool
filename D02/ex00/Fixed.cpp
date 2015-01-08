@@ -1,11 +1,11 @@
 #include "Fixed.hpp"
 
-Fixed::Fixed() : m_fixedPoint(0), m_fracBits(0)
+Fixed::Fixed() : m_rawBits(0), m_nbFracBits(8)
 {
 	std::cout << "Default constructor called" << std::endl;
 }
 
-Fixed::Fixed(Fixed const & src) : m_fixedPoint(0), m_fracBits(0)
+Fixed::Fixed(Fixed const & src) : m_rawBits(0), m_nbFracBits(8)
 {
 	std::cout << "Copy constructor called" << std::endl;
 	*this = src;
@@ -21,7 +21,7 @@ Fixed & Fixed::operator=(Fixed const & rhs)
 	std::cout << "Assignation operator called" << std::endl;
 	if (this != &rhs)
 	{
-		/* my implementation, don't forget to change this. */
+		m_rawBits = rhs.getRawBits();
 	}
 	return (*this);
 }
@@ -29,16 +29,13 @@ Fixed & Fixed::operator=(Fixed const & rhs)
 void	Fixed::setRawBits(int const raw)
 {
 	std::cout << "setRawBits member function called" << std::endl;
-	if (raw > -1 && raw < 8)
-	{
-		m_fixedPoint = raw;
-	}
+	m_rawBits = raw;
 }
 
 int	Fixed::getRawBits() const
 {
 	std::cout << "getRawBits member function called" << std::endl;
-	return (m_fracBits);
+	return (m_rawBits);
 }
 
 std::ostream & operator<<(std::ostream & o, Fixed const & i)

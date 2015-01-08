@@ -14,6 +14,9 @@ class ScavTrap : public ClapTrap
 		~ScavTrap();
 
 		void	challengeNewcomer(std::string const & target) const;
+
+	private:
+		void	setMembers();
 };
 
 #endif /* !SCAVTRAP_HPP */

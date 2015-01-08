@@ -18,10 +18,14 @@ class NinjaTrap : public virtual ClapTrap
 		NinjaTrap & operator=(NinjaTrap const & rhs);
 
 		void	healNoob(std::string const & target) const;
+
 		
 		void	ninjaShoebox(FragTrap const & trap, std::string const target);
 		void	ninjaShoebox(ScavTrap const & trap, std::string const target);
 		void	ninjaShoebox(NinjaTrap const & trap, std::string const target);
+
+	private:
+		void	setMembers();
 
 };
 

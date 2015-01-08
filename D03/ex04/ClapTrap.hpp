@@ -19,6 +19,11 @@ class ClapTrap
 		void	takeDamage(unsigned int amount);
 		void	beRepaired(unsigned int amount);
 
+		void	setMeleeAttackDamage(unsigned int);
+		void	setRangedAttackDamage(unsigned int);
+		unsigned int	getMeleeAttackDamage() const;
+		unsigned int	getRangedAttackDamage() const;
+
 	protected:
 		unsigned int	m_hitPoints;
 		unsigned int	m_maxHitPoints;

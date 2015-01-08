@@ -1,8 +1,20 @@
 #include "FragTrap.hpp"
 #include <cstdlib>
 
+void		FragTrap::setMembers()
+{
+	m_hitPoints = (!m_hitPoints || m_hitPoints < 100 ? 100 : m_hitPoints);
+	m_maxHitPoints = m_hitPoints;
+	m_energyPoints = (!m_energyPoints || m_energyPoints < 100 ? 100 : m_energyPoints);
+	m_maxEnergyPoints = m_energyPoints;
+	m_meleeAttackDamage = (!m_meleeAttackDamage || m_meleeAttackDamage < 30 ? 30 : m_meleeAttackDamage);
+	m_rangedAttackDamage = (!m_rangedAttackDamage || m_rangedAttackDamage < 20 ? 20 : m_rangedAttackDamage);
+	m_armorDamageReduction = (!m_armorDamageReduction || m_armorDamageReduction < 5 ? 5 : m_armorDamageReduction);
+}
+
 FragTrap::FragTrap() : ClapTrap()
 {
+	setMembers();
 	std::cout
 		<< "A default FR4G-TP has been constructed, the poor robot has no name"
 		<< std::endl;
@@ -10,12 +22,14 @@ FragTrap::FragTrap() : ClapTrap()
 
 FragTrap::FragTrap(std::string name) : ClapTrap(name)
 {
+	setMembers();
 	std::cout << "A FR4G-TP has been constructed, his name is "
 		<< m_name << std::endl;
 }
 
 FragTrap::FragTrap(FragTrap const & src) : ClapTrap(src)
 {
+	setMembers();
 	std::cout
 		<< "A FR4G-TP has been copied, his name is "
 		<< m_name << std::endl;

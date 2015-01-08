@@ -17,6 +17,9 @@ class FragTrap : public virtual ClapTrap
 
 		void	vaulthunter_dot_exe(std::string const & target) const;
 
+	private:
+		void	setMembers();
+
 };
 
 /*std::ostream & operator<<(std::ostream & o, FragTrap const & i);*/

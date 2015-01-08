@@ -12,12 +12,12 @@ class Fixed
 
 		Fixed & operator=(Fixed const & rhs);
 
-		int	getRawBits(void) const;
+		int		getRawBits(void) const;
 		void	setRawBits(int const raw);
 
 	private:
-		int		m_fixedPoint;
-		int const 	m_fracBits;
+		int			m_rawBits;
+		int const 	m_nbFracBits;
 
 };
 

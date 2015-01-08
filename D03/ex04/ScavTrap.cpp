@@ -1,13 +1,20 @@
 #include "ScavTrap.hpp"
 #include <cstdlib>
 
+void		ScavTrap::setMembers()
+{
+	m_hitPoints = (!m_hitPoints || m_hitPoints < 100 ? 100 : m_hitPoints);
+	m_maxHitPoints = m_hitPoints;
+	m_energyPoints = (!m_energyPoints || m_energyPoints < 50 ? 50 : m_energyPoints);
+	m_maxEnergyPoints = m_energyPoints;
+	m_meleeAttackDamage = (!m_meleeAttackDamage || m_meleeAttackDamage < 20 ? 20 : m_meleeAttackDamage);
+	m_rangedAttackDamage = (!m_rangedAttackDamage || m_rangedAttackDamage < 15 ? 15 : m_rangedAttackDamage);
+	m_armorDamageReduction = (!m_armorDamageReduction || m_armorDamageReduction < 3 ? 3 : m_armorDamageReduction);
+}
+
 ScavTrap::ScavTrap() : ClapTrap()
 {
-	m_energyPoints = 50;
-	m_maxEnergyPoints = 50;
-	m_meleeAttackDamage = 20;
-	m_rangedAttackDamage = 15;
-	m_armorDamageReduction = 3;
+	setMembers();
 	std::cout
 		<< "A default SC4V-TP has been constructed, the poor robot has no name"
 		<< std::endl;
@@ -15,21 +22,13 @@ ScavTrap::ScavTrap() : ClapTrap()
 
 ScavTrap::ScavTrap(std::string name) : ClapTrap(name)
 {
-	m_energyPoints = 50;
-	m_maxEnergyPoints = 50;
-	m_meleeAttackDamage = 20;
-	m_rangedAttackDamage = 15;
-	m_armorDamageReduction = 3;
+	setMembers();
 	std::cout << "A SC4V-TP has been constructed, his name is " << name << std::endl;
 }
 
 ScavTrap::ScavTrap(ScavTrap const & src) : ClapTrap(src)
 {
-	m_energyPoints = 50;
-	m_maxEnergyPoints = 50;
-	m_meleeAttackDamage = 20;
-	m_rangedAttackDamage = 15;
-	m_armorDamageReduction = 3;
+	setMembers();
 	std::cout << "A SC4V-TP has been copied, his name is " << m_name << std::endl;
 }
 

@@ -11,12 +11,14 @@ Fixed::Fixed(int const numInt) : m_nbFracBits(8)
 {
 	std::cout << "Int constructor called" << std::endl;
 	m_rawBits = numInt * std::pow(2, m_nbFracBits);
+	std::cout << "m_rawBits: " << m_rawBits << std::endl;
 }
 
 Fixed::Fixed(float const numFloat): m_nbFracBits(8)
 {
 	std::cout << "Float constructor called" << std::endl;
-	m_rawBits = roundf(numFloat * std::pow(2, m_nbFracBits));
+	m_rawBits = (int)roundf(numFloat * std::pow(2, m_nbFracBits));
+	std::cout << "m_rawBits: " << m_rawBits << std::endl;
 }
 
 Fixed::Fixed(Fixed const & src) : m_rawBits(0), m_nbFracBits(8)
