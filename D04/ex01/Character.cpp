@@ -40,7 +40,7 @@ void	Character::equip(AWeapon *weapon)
 	m_weapon = weapon;
 }
 
-void	Character::attack(Enemy *enemy)
+void	Character::attack(Enemy* &enemy)
 {
 	if (m_weapon != NULL)
 	{
@@ -55,7 +55,19 @@ void	Character::attack(Enemy *enemy)
 				<< std::endl;
 
 			m_actionPoints = actionPointsLeft;
-			enemy->takeDamage(m_weapon->getDamage());
+			if (enemy)
+			{
+				enemy->takeDamage(m_weapon->getDamage());
+				if (enemy->getHP() == 0)
+				{
+					delete enemy;
+					enemy = NULL;
+				}
+			}
+			else
+			{
+				std::cout << "enemy is already dead." << std::endl;
+			}
 		}
 	}
 	else

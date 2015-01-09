@@ -18,10 +18,10 @@ class Character
 
 		void		recoverAP();
 		void		equip(AWeapon*);
-		void		attack(Enemy*);
+		void		attack(Enemy* &enemy);
 		std::string const	&getName() const;
-		AWeapon			*getWeapon() const;
-		int			getAP() const;
+		AWeapon				*getWeapon() const;
+		int					getAP() const;
 
 	private:
 		std::string	m_name;

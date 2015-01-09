@@ -22,5 +22,28 @@ int main()
 	std::cout << *zaz;
 	zaz->attack(b);
 	std::cout << *zaz;
+
+	if (b == NULL)
+	{
+		std::cout << "enemy is NULL" << std::endl;
+	}
+	else
+	{
+		std::cout << "enemy is not NULL" << std::endl;
+	}
+	while (b && b->getHP())
+	{
+		zaz->attack(b);
+		zaz->recoverAP();
+	}
+
+	if (b == NULL)
+	{
+		std::cout << "enemy is NULL" << std::endl;
+	}
+	else
+	{
+		std::cout << "enemy is not NULL" << std::endl;
+	}
 	return 0;
 }

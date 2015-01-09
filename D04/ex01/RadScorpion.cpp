@@ -12,7 +12,7 @@ RadScorpion::RadScorpion(RadScorpion const & src) : Enemy(80, "RadScorpion")
 
 RadScorpion::~RadScorpion()
 {
-	std::cout << "“* SPROTCH *" << std::endl;
+	std::cout << "* SPROTCH *" << std::endl;
 }
 
 RadScorpion & RadScorpion::operator=(RadScorpion const & rhs)
