@@ -1,0 +1,36 @@
+#ifndef SORCERER_HPP
+# define SORCERER_HPP
+
+#include "Victim.hpp"
+#include "Peon.hpp"
+#include <iostream>
+#include <string>
+
+class Sorcerer
+{
+	public:
+		Sorcerer(std::string name, std::string title);
+		Sorcerer(Sorcerer const & src);
+		~Sorcerer();
+
+		Sorcerer & operator=(Sorcerer const & rhs);
+
+		std::string	getName() const;
+		std::string	getTitle() const;
+		void		setName(std::string const name);
+		void		setTitle(std::string const title);
+
+		void	introduceHimself() const;
+		void	polymorph(Victim const & victim);
+		void	polymorph(Peon const & victim);
+
+	private:
+		Sorcerer();
+		std::string m_name;
+		std::string m_title;
+
+};
+
+std::ostream & operator<<(std::ostream & o, Sorcerer const & rhs);
+
+#endif /* !SORCERER_HPP */
