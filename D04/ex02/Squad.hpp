@@ -18,7 +18,7 @@ class Squad
 
 	private:
 		int				m_count;
-		ISpaceMarine	*squad;
+		ISpaceMarine	*m_squad[2];
 
 
 };

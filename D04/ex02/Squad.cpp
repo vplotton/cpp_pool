@@ -30,6 +30,7 @@ int		Squad::getCount() const
 
 ISpaceMarine	*Squad::getUnit(int unit) const
 {
+	return (m_squad[i]);
 }
 
 int		Squad::push(ISpaceMarine * spaceMarine) const
