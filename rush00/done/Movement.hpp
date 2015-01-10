@@ -7,7 +7,7 @@ class Movement
 {
 	public:
 		Movement();
-		Movement(int, int);
+		Movement(int, int, int);
 		Movement(Movement const & src);
 		virtual ~Movement();
 
@@ -15,8 +15,10 @@ class Movement
 
 		void	setX(int const & x);
 		void	setY(int const & y);
+		void	setSpeed(int const & speed);
 		int		getX() const;
 		int		getY() const;
+		int		getSpeed() const;
 
 		void	goUp();
 		void	goDown();
@@ -26,6 +28,7 @@ class Movement
 	private:
 		int		m_x;
 		int		m_y;
+		int		m_speed;
 };
 
 std::ostream & operator<<(std::ostream & o, Movement const & i);

@@ -21,7 +21,7 @@ AbstractObject::AbstractObject(e_type type, unsigned int life, int x, int y) :
 	m_type(type),
 	m_name(typeNames[((int)type < 4 ? (int)type : AbstractObject::DEFAULT)]),
 	m_life(life),
-	m_movement(new Movement(x, y)),
+	m_movement(new Movement(x, y, 1)),
 	m_interact(new Interact)
 {
 }

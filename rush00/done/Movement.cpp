@@ -1,14 +1,14 @@
 #include "Movement.hpp"
 
-Movement::Movement() : m_x(0), m_y(0)
+Movement::Movement() : m_x(0), m_y(0), m_speed(0)
 {
 }
 
-Movement::Movement(int x, int y) : m_x(x), m_y(y)
+Movement::Movement(int x, int y, int speed) : m_x(x), m_y(y), m_speed(speed)
 {
 }
 
-Movement::Movement(Movement const & src) : m_x(0), m_y(0)
+Movement::Movement(Movement const & src) : m_x(0), m_y(0), m_speed(0)
 {
 	*this = src;
 }
@@ -17,6 +17,7 @@ Movement::~Movement()
 {
 	m_x = 0;
 	m_y = 0;
+	m_speed = 0;
 }
 
 Movement & Movement::operator=(Movement const & rhs)
@@ -25,6 +26,7 @@ Movement & Movement::operator=(Movement const & rhs)
 	{
 		m_x = rhs.m_x;
 		m_y = rhs.m_y;
+		m_speed = rhs.m_speed;
 	}
 	return (*this);
 }
@@ -39,6 +41,11 @@ void	Movement::setY(int const & y)
 	m_y = y;
 }
 
+void	Movement::setSpeed(int const & speed)
+{
+	m_speed = speed;
+}
+
 int		Movement::getX() const
 {
 	return m_x;
@@ -47,6 +54,11 @@ int		Movement::getX() const
 int		Movement::getY() const
 {
 	return m_y;
+}
+
+int		Movement::getSpeed() const
+{
+	return m_speed;
 }
 
 void	Movement::goUp()
@@ -71,8 +83,9 @@ void    Movement::goRight()
 
 std::ostream & operator<<(std::ostream & o, Movement const & i)
 {
-	o << "Movement - [ x : " << i.getX()
-		<< " ] [ y : " << i.getY()
-		<< " ]" << std::endl;
+	o << "Movement:" << std::endl
+		<< "		x : " << i.getX() << std::endl
+		<< "		y : " << i.getY() << std::endl
+		<< "		speed : " << i.getSpeed() << std::endl;
 	return (o);
 }

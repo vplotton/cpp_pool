@@ -57,10 +57,12 @@ Weapon		*SpaceShip::getWeapon() const
 
 std::ostream & operator<<(std::ostream & o, SpaceShip const & i)
 {
-	o << "Object - [ type : " << i.getType()
-		<< " ] - [ name : " << i.getName()
-		<< " ] - [ title : " << i.getTitle()
-		<< " ] [ life : " << i.getLife()
-		<< " ]" << std::endl;
+	o << "Object:" << std::endl
+		<< "	- type : " << i.getType() << std::endl
+		<< "	- name : " << i.getName() << std::endl
+		<< "	- title : " << i.getTitle() << std::endl
+		<< "	- life : " << i.getLife() << std::endl
+		<< "	- " << *i.getMovement() << std::endl
+		<< "	- " << *i.getWeapon() << std::endl;
 	return (o);
 }

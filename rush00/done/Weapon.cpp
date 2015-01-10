@@ -57,8 +57,8 @@ Projectile		*Weapon::shoot(int x, int y)
 
 std::ostream & operator<<(std::ostream & o, Weapon const & i)
 {
-	o << "Weapon - [ name : " << i.getName()
-		<< " ] [ damage : " << i.getDamage()
-		<< " ]" << std::endl;
+	o << "Weapon:" << std::endl
+		<< "		name : " << i.getName() << std::endl
+		<< "		damage : " << i.getDamage();
 	return (o);
 }

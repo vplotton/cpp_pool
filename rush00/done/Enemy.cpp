@@ -30,9 +30,10 @@ Enemy & Enemy::operator=(Enemy const & rhs)
 
 std::ostream & operator<<(std::ostream & o, Enemy const & i)
 {
-	o << "Object - [ type : " << i.getType()
-		<< " ] - [ name : " << i.getName()
-		<< " ] [ life : " << i.getLife()
-		<< " ]" << std::endl;
+	o << "Object:" << std::endl
+		<< "    - type : " << i.getType() << std::endl
+		<< "    - name : " << i.getName() << std::endl
+		<< "    - life : " << i.getLife() << std::endl
+		<< "    - " << *i.getMovement() << std::endl;
 	return (o);
 }
