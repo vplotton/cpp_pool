@@ -21,9 +21,10 @@ Interact & Interact::operator=(Interact const & rhs)
 	}
 	return (*this);
 }
-
+/*
 std::ostream & operator<<(std::ostream & o, Interact const & i)
 {
 	o << "Don't forget to change this.";
 	return (o);
 }
+*/
