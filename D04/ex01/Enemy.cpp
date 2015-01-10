@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   Enemy.cpp                                          :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: vplotton <vplotton@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2015/01/10 02:22:40 by vplotton          #+#    #+#             */
+/*   Updated: 2015/01/10 03:04:35 by vplotton         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "Enemy.hpp"
 
 Enemy::Enemy() : m_type(""), m_hitPoints(0)
@@ -47,10 +59,8 @@ void		Enemy::setHP(int hitPoints)
 	m_hitPoints = hitPoints;
 }
 
-/*
 std::ostream & operator<<(std::ostream & o, Enemy const & i)
 {
-	o << "Don't forget to change this.";
+	o << "Enemy [ " << i.getType() << " ]: " << i.getHP() << "HP." << std::endl;
 	return (o);
 }
-*/

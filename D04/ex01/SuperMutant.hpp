@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   SuperMutant.hpp                                    :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: vplotton <vplotton@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2015/01/10 02:23:36 by vplotton          #+#    #+#             */
+/*   Updated: 2015/01/10 02:59:35 by vplotton         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #ifndef SUPERMUTANT_HPP
 # define SUPERMUTANT_HPP
 
@@ -19,8 +31,6 @@ class SuperMutant : public Enemy
 
 };
 
-/*
 std::ostream & operator<<(std::ostream & o, SuperMutant const & i);
-*/
 
 #endif /* !SUPERMUTANT_HPP */

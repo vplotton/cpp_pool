@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   RadScorpion.hpp                                    :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: vplotton <vplotton@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2015/01/10 02:23:26 by vplotton          #+#    #+#             */
+/*   Updated: 2015/01/10 03:00:04 by vplotton         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #ifndef RADSCORPION_HPP
 # define RADSCORPION_HPP
 
@@ -19,8 +31,6 @@ class RadScorpion : public Enemy
 
 };
 
-/*
 std::ostream & operator<<(std::ostream & o, RadScorpion const & i);
-*/
 
 #endif /* !RADSCORPION_HPP */

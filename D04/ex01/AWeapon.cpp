@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   AWeapon.cpp                                        :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: vplotton <vplotton@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2015/01/10 02:22:06 by vplotton          #+#    #+#             */
+/*   Updated: 2015/01/10 03:04:08 by vplotton         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "AWeapon.hpp"
 
 AWeapon::AWeapon() : m_name(""), m_actionPoints(0), m_attackDamage(0)
@@ -43,10 +55,9 @@ int		AWeapon::getDamage() const
 	return m_attackDamage;
 }
 
-/*
 std::ostream & operator<<(std::ostream & o, AWeapon const & i)
 {
-	o << "Don't forget to change this.";
+	o << "Weapon [ " << i.getName() << " ]: "
+		<< i.getDamage() << "damage, costs " << i.getAPCost() << "AP" << std::endl;
 	return (o);
 }
-*/

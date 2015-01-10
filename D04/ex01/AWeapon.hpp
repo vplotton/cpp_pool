@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   AWeapon.hpp                                        :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: vplotton <vplotton@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2015/01/10 02:22:11 by vplotton          #+#    #+#             */
+/*   Updated: 2015/01/10 03:04:04 by vplotton         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #ifndef AWEAPON_HPP
 # define AWEAPON_HPP
 
@@ -27,8 +39,6 @@ class AWeapon
 
 };
 
-/*
 std::ostream & operator<<(std::ostream & o, AWeapon const & i);
-*/
 
 #endif /* !AWEAPON_HPP */

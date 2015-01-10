@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   SuperMutant.cpp                                    :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: vplotton <vplotton@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2015/01/10 02:23:31 by vplotton          #+#    #+#             */
+/*   Updated: 2015/01/10 03:00:05 by vplotton         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "SuperMutant.hpp"
 
 SuperMutant::SuperMutant() : Enemy(170, "Super Mutant")
@@ -35,10 +47,8 @@ void	SuperMutant::takeDamage(int damage)
 	}
 }
 
-/*
 std::ostream & operator<<(std::ostream & o, SuperMutant const & i)
 {
-	o << "Don't forget to change this.";
+	o << "Enemy [ " << i.getType() << " ]: " << i.getHP() << "HP." << std::endl;
 	return (o);
 }
-*/

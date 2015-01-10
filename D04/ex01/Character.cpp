@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   Character.cpp                                      :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: vplotton <vplotton@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2015/01/10 02:22:30 by vplotton          #+#    #+#             */
+/*   Updated: 2015/01/10 02:50:50 by vplotton         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "Character.hpp"
 
 Character::Character() : m_name(""), m_actionPoints(40), m_weapon(NULL)
@@ -63,11 +75,16 @@ void	Character::attack(Enemy* &enemy)
 					delete enemy;
 					enemy = NULL;
 				}
+				m_weapon->attack();
 			}
 			else
 			{
 				std::cout << "enemy is already dead." << std::endl;
 			}
+		}
+		else
+		{
+			std::cout << "No more action points" << std::endl;
 		}
 	}
 	else

@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   Victim.hpp                                         :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: vplotton <vplotton@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2015/01/10 02:19:41 by vplotton          #+#    #+#             */
+/*   Updated: 2015/01/10 03:13:13 by vplotton         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #ifndef VICTIM_HPP
 # define VICTIM_HPP
 
@@ -9,7 +21,7 @@ class Victim
 	public:
 		Victim(std::string name);
 		Victim(Victim const & src);
-		~Victim();
+		virtual ~Victim();
 
 		Victim & operator=(Victim const & rhs);
 
