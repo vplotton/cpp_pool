@@ -1,12 +1,35 @@
 #include "AbstractObject.hpp"
 
-AbstractObject::AbstractObject() : m_life(0),
+std::string const AbstractObject::typeNames[] =
+{
+	"Projectile",
+	"SpaceShip",
+	"Default",
+	"Enemy"
+};
+
+AbstractObject::AbstractObject() : 
+	m_type(AbstractObject::DEFAULT),
+	m_name(typeNames[(int)AbstractObject::DEFAULT]),
+	m_life(0),
 	m_movement(new Movement),
 	m_interact(new Interact)
 {
 }
 
-AbstractObject::AbstractObject(AbstractObject const & src) : m_life(0),
+AbstractObject::AbstractObject(e_type type, unsigned int life, int x, int y) :
+	m_type(type),
+	m_name(typeNames[((int)type < 4 ? (int)type : AbstractObject::DEFAULT)]),
+	m_life(life),
+	m_movement(new Movement(x, y)),
+	m_interact(new Interact)
+{
+}
+
+AbstractObject::AbstractObject(AbstractObject const & src) :
+	m_type(AbstractObject::DEFAULT),
+	m_name(typeNames[(int)AbstractObject::DEFAULT]),
+	m_life(0),
 	m_movement(new Movement),
 	m_interact(new Interact)
 {
@@ -16,7 +39,7 @@ AbstractObject::AbstractObject(AbstractObject const & src) : m_life(0),
 AbstractObject::~AbstractObject()
 {
 	m_life = 0;
-	
+
 	if (m_movement)
 	{
 		delete m_movement;
@@ -48,22 +71,22 @@ void	AbstractObject::setType(e_type const &type)
 
 void    AbstractObject::setName(std::string const &name)
 {
-	    m_name = name;
+	m_name = name;
 }
 
 void    AbstractObject::setLife(unsigned int const &life)
 {
-	    m_life = life;
+	m_life = life;
 }
 
 void    AbstractObject::setMovement(Movement * &movement)
 {
-	    m_movement = movement;
+	m_movement = movement;
 }
 
 void    AbstractObject::setInteract(Interact * &interact)
 {
-	    m_interact = interact;
+	m_interact = interact;
 }
 
 AbstractObject::e_type	AbstractObject::getType() const
@@ -96,6 +119,6 @@ std::ostream & operator<<(std::ostream & o, AbstractObject const & i)
 	o << "Object - [ type : " << i.getType()
 		<< " ] - [ name : " << i.getName()
 		<< " ] [ life : " << i.getLife()
-		<< " ]" << std::endl;;
+		<< " ]" << std::endl;
 	return (o);
 }
