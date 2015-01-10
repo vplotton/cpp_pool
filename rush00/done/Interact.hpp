@@ -12,10 +12,10 @@ class Interact
 
 		Interact & operator=(Interact const & rhs);
 
-	private:
 
+	private:
 };
 
-std::ostream & operator<<(std::ostream & o, Interact const & i);
+/*std::ostream & operator<<(std::ostream & o, Interact const & i);*/
 
 #endif /* !INTERACT_HPP */
