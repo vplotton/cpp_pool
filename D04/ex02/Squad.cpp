@@ -44,6 +44,10 @@ ISpaceMarine	*Squad::getUnit(int unit)
 	{
 		marine = m_squad[unit];
 	}
+	else
+	{
+		std::cout << "Index not found." << std::endl;
+	}
 	return (marine);
 }
 
