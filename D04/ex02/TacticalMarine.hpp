@@ -1,6 +1,7 @@
 #ifndef TACTICALMARINE_HPP
 # define TACTICALMARINE_HPP
 
+#include "ISpaceMarine.hpp"
 #include <iostream>
 
 class TacticalMarine : public ISpaceMarine
@@ -12,7 +13,8 @@ class TacticalMarine : public ISpaceMarine
 
 		TacticalMarine & operator=(TacticalMarine const & rhs);
 
-		TacticalMarine & clone();
+		virtual ISpaceMarine* clone() const;
+
 		virtual void battleCry() const;
 		virtual void rangedAttack() const;
 		virtual void meleeAttack() const;
@@ -20,6 +22,8 @@ class TacticalMarine : public ISpaceMarine
 
 };
 
+/*
 std::ostream & operator<<(std::ostream & o, TacticalMarine const & i);
+*/
 
 #endif /* !TACTICALMARINE_HPP */

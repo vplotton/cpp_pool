@@ -24,9 +24,9 @@ TacticalMarine & TacticalMarine::operator=(TacticalMarine const & rhs)
 	return (*this);
 }
 
-TacticalMarine	TacticalMarine::clone()
+ISpaceMarine* TacticalMarine::clone() const
 {
-	TacticalMarine newMarine(*this);
+	ISpaceMarine *newMarine = new TacticalMarine(*this);
 	return (newMarine);
 }
 
@@ -45,8 +45,10 @@ void	TacticalMarine::meleeAttack() const
 	std::cout << "* attacks with chainsword *" << std::endl;
 }
 
+/*
 std::ostream & operator<<(std::ostream & o, TacticalMarine const & i)
 {
 	o << "Don't forget to change this.";
 	return (o);
 }
+*/

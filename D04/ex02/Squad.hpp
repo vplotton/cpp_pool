@@ -1,9 +1,12 @@
 #ifndef SQUAD_HPP
 # define SQUAD_HPP
 
+#include "ISquad.hpp"
+#include "TacticalMarine.hpp"
+#include "AssaultTerminator.hpp"
 #include <iostream>
 
-class Squad
+class Squad : public ISquad
 {
 	public:
 		Squad();
@@ -18,11 +21,13 @@ class Squad
 
 	private:
 		int				m_count;
-		ISpaceMarine	*m_squad[2];
+		ISpaceMarine	**m_squad;
 
 
 };
 
+/*
 std::ostream & operator<<(std::ostream & o, Squad const & i);
+*/
 
 #endif /* !SQUAD_HPP */
