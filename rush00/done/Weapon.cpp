@@ -48,12 +48,14 @@ std::string		Weapon::getName() const
 	return m_name;
 }
 
-Projectile		*Weapon::shoot(Movement const *movement)
+AbstractObject		*Weapon::shoot(Movement const *movement)
 {
-	Projectile	*newProjectile = new Projectile(movement->getX(), movement->getY());
+	AbstractObject	*newProjectile =
+		new Projectile(movement->getX(), movement->getY());
 
 	newProjectile->getMovement()->setSpeed(movement->getSpeed());
 	newProjectile->getMovement()->setDirection(movement->getDirection());
+	newProjectile->getMovement()->goForward();
 	return newProjectile;
 }
 

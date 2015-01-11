@@ -2,7 +2,6 @@
 # define ABSTRACTOBJECT_HPP
 
 #include "Movement.hpp"
-#include "Interact.hpp"
 #include <iostream>
 
 class AbstractObject
@@ -26,12 +25,10 @@ class AbstractObject
 		void	setName(std::string const &name);
 		void	setLife(unsigned int const & life);
 		void	setMovement(Movement * &movement);
-		void	setInteract(Interact * &interact);
 		e_object		getType() const;
 		std::string		getName() const;
 		unsigned int	getLife() const;
 		Movement		*getMovement() const;
-		Interact		*getInteract() const;
 
 		static const std::string typeNames[];
 
@@ -40,7 +37,6 @@ class AbstractObject
 		std::string		m_name;
 		unsigned int	m_life;
 		Movement		*m_movement;
-		Interact		*m_interact;
 
 	private:
 		AbstractObject();

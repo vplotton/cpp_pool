@@ -12,8 +12,7 @@ AbstractObject::AbstractObject() :
 	m_type(AbstractObject::DEFAULT),
 	m_name(typeNames[(int)AbstractObject::DEFAULT]),
 	m_life(0),
-	m_movement(new Movement),
-	m_interact(new Interact)
+	m_movement(new Movement)
 {
 }
 
@@ -21,8 +20,7 @@ AbstractObject::AbstractObject(e_object type, unsigned int life, int x, int y) :
 	m_type(type),
 	m_name(typeNames[((int)type < 4 ? (int)type : AbstractObject::DEFAULT)]),
 	m_life(life),
-	m_movement(new Movement(x, y, 1)),
-	m_interact(new Interact)
+	m_movement(new Movement(x, y, 1))
 {
 }
 
@@ -30,8 +28,7 @@ AbstractObject::AbstractObject(AbstractObject const & src) :
 	m_type(AbstractObject::DEFAULT),
 	m_name(typeNames[(int)AbstractObject::DEFAULT]),
 	m_life(0),
-	m_movement(new Movement),
-	m_interact(new Interact)
+	m_movement(new Movement)
 {
 	*this = src;
 }
@@ -44,11 +41,6 @@ AbstractObject::~AbstractObject()
 	{
 		delete m_movement;
 	}
-
-	if (m_interact)
-	{
-		delete m_interact;
-	}
 }
 
 AbstractObject & AbstractObject::operator=(AbstractObject const & rhs)
@@ -59,7 +51,6 @@ AbstractObject & AbstractObject::operator=(AbstractObject const & rhs)
 		m_name = rhs.m_name;
 		m_life = rhs.m_life;
 		m_movement = new Movement(*rhs.m_movement);
-		m_interact = new Interact(*rhs.m_interact);
 	}
 	return (*this);
 }
@@ -84,11 +75,6 @@ void    AbstractObject::setMovement(Movement * &movement)
 	m_movement = movement;
 }
 
-void    AbstractObject::setInteract(Interact * &interact)
-{
-	m_interact = interact;
-}
-
 AbstractObject::e_object	AbstractObject::getType() const
 {
 	return m_type;
@@ -109,16 +95,12 @@ Movement		*AbstractObject::getMovement() const
 	return m_movement;
 }
 
-Interact		*AbstractObject::getInteract() const
-{
-	return m_interact;
-}
-
 std::ostream & operator<<(std::ostream & o, AbstractObject const & i)
 {
-	o << "Object - [ type : " << i.getType()
-		<< " ] - [ name : " << i.getName()
-		<< " ] [ life : " << i.getLife()
-		<< " ]" << std::endl;
+	o << "Object:" << std::endl
+		<< "    - type : " << i.getType() << std::endl
+		<< "    - name : " << i.getName() << std::endl
+		<< "    - life : " << i.getLife() << std::endl
+		<< "    - " << *i.getMovement() << std::endl;
 	return (o);
 }
