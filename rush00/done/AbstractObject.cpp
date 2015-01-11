@@ -17,7 +17,7 @@ AbstractObject::AbstractObject() :
 {
 }
 
-AbstractObject::AbstractObject(e_type type, unsigned int life, int x, int y) :
+AbstractObject::AbstractObject(e_object type, unsigned int life, int x, int y) :
 	m_type(type),
 	m_name(typeNames[((int)type < 4 ? (int)type : AbstractObject::DEFAULT)]),
 	m_life(life),
@@ -64,7 +64,7 @@ AbstractObject & AbstractObject::operator=(AbstractObject const & rhs)
 	return (*this);
 }
 
-void	AbstractObject::setType(e_type const &type)
+void	AbstractObject::setType(e_object const &type)
 {
 	m_type = type;
 }
@@ -89,7 +89,7 @@ void    AbstractObject::setInteract(Interact * &interact)
 	m_interact = interact;
 }
 
-AbstractObject::e_type	AbstractObject::getType() const
+AbstractObject::e_object	AbstractObject::getType() const
 {
 	return m_type;
 }

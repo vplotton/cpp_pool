@@ -8,6 +8,7 @@ Enemy::Enemy() :
 Enemy::Enemy(unsigned int life, int x, int y) :
 	AbstractObject(AbstractObject::ENEMY, life, x, y)
 {
+	m_movement->setDirection(Movement::LEFT);
 }
 
 Enemy::Enemy(Enemy const & src) :

@@ -48,10 +48,12 @@ std::string		Weapon::getName() const
 	return m_name;
 }
 
-Projectile		*Weapon::shoot(int x, int y)
+Projectile		*Weapon::shoot(Movement const *movement)
 {
-	Projectile	*newProjectile = new Projectile(x, y);
+	Projectile	*newProjectile = new Projectile(movement->getX(), movement->getY());
 
+	newProjectile->getMovement()->setSpeed(movement->getSpeed());
+	newProjectile->getMovement()->setDirection(movement->getDirection());
 	return newProjectile;
 }
 

@@ -20,7 +20,7 @@ class Weapon
 		unsigned int	getDamage() const;
 		std::string		getName() const;
 
-		Projectile	*shoot(int, int);
+		Projectile	*shoot(Movement const *);
 
 	private:
 		unsigned int	m_damage;
