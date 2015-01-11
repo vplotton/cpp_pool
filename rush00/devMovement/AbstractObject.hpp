@@ -12,7 +12,8 @@ class AbstractObject
 			PROJECTILE = 0,
 			SPACESHIP,
 			DEFAULT,
-			ENEMY
+			ENEMY,
+			BOSS
 		};
 
 		AbstractObject(e_object type, unsigned int life);

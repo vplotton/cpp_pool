@@ -32,7 +32,10 @@ EnemyMovement::EnemyMovement(EnemyMovement const & src) : AbstractMovement(src)
 
 EnemyMovement::~EnemyMovement()
 {
-	delete [] m_pattern;
+	if (m_pattern)
+	{
+		delete [] m_pattern;
+	}
 }
 
 EnemyMovement & EnemyMovement::operator=(EnemyMovement const & rhs)
