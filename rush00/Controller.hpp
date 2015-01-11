@@ -2,6 +2,7 @@
 # define CONTROLLER_HPP
 
 #include <iostream>
+#include "Display.hpp"
 
 class Controller
 {
@@ -9,9 +10,8 @@ class Controller
 		Controller();
 		Controller(Controller const & src);
 		~Controller();
-
 		Controller & operator=(Controller const & rhs);
-
+		void ft_get_input(int key, Display  *& d, int &x, int &y);
 	private:
 
 };
