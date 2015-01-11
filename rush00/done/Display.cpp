@@ -39,7 +39,7 @@ WINDOW*	Display::ft_init_win()
 	WINDOW *win;
 	int height = 50;
 	int width = 100;
-	int starty = 0;
+	int starty = 5;
 	int startx = 0;
 
 	win = newwin(height, width, starty, startx);

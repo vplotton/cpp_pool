@@ -3,6 +3,7 @@
 
 #include <iostream>
 #include "Display.hpp"
+#include "SpaceShip.hpp"
 
 class Controller
 {
@@ -11,7 +12,7 @@ class Controller
 		Controller(Controller const & src);
 		~Controller();
 		Controller & operator=(Controller const & rhs);
-		void ft_get_input(int key, Display  *& d, int &x, int &y);
+		void ft_get_input(int key, Display  *& d, SpaceShip *& ship);
 	private:
 
 };
