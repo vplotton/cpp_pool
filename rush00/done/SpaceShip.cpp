@@ -5,6 +5,7 @@ SpaceShip::SpaceShip() :
 {
 	m_title = std::string("");
 	m_weapon = new Weapon;
+	m_movement->setDirection(Movement::RIGHT);
 }
 
 SpaceShip::SpaceShip(std::string title, unsigned int life, int x, int y) :
@@ -12,11 +13,13 @@ SpaceShip::SpaceShip(std::string title, unsigned int life, int x, int y) :
 {
 	m_title = title;
 	m_weapon = new Weapon;
+	m_movement->setDirection(Movement::RIGHT);
 }
 
 SpaceShip::SpaceShip(SpaceShip const & src) :
 	AbstractObject(AbstractObject::SPACESHIP, 1, 0, 0)
 {
+	m_movement->setDirection(Movement::RIGHT);
 	*this = src;
 }
 
