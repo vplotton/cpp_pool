@@ -47,9 +47,7 @@ AbstractObject *Controller::ft_get_input(int key, Display  *& d, SpaceShip *&shi
 						            d->print_obj(d->get_win(), ship->getMovement()->getX(), ship->getMovement()->getY(), 0);
 			wrefresh(d->get_win());
 			break;	
-		case KEY_BACKSPACE:
-		case KEY_ENTER:
-		case KEY_DC:
+		case ' ':
 			newProjectile = ship->getWeapon()->shoot(ship->getMovement());
 			break ;
 	}

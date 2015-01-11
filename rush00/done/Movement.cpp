@@ -156,7 +156,7 @@ std::string		Movement::getDirName() const
 
 void	Movement::goUp()
 {
-	if (m_y - 1 > m_minY)
+	if (m_y - 1 >= m_minY)
 	{
 		--m_y;
 	}
@@ -164,7 +164,7 @@ void	Movement::goUp()
 
 void    Movement::goDown()
 {
-	if (m_y + 1 < m_maxY)
+	if (m_y + 1 <= m_maxY)
 	{
 		++m_y;
 	}
@@ -172,7 +172,7 @@ void    Movement::goDown()
 
 void    Movement::goLeft()
 {
-	if (m_x - 1 > m_minX)
+	if (m_x - 1 >= m_minX)
 	{
 		--m_x;
 	}
@@ -180,7 +180,7 @@ void    Movement::goLeft()
 
 void    Movement::goRight()
 {
-	if (m_x + 1 < m_maxX)
+	if (m_x + 1 <= m_maxX)
 	{
 		++m_x;
 	}
@@ -210,6 +210,15 @@ void	Movement::randMove()
 		(m_direction == LEFT ? goLeft() : goRight());
 		goUp();
 	}
+}
+
+bool	Movement::checkLimits() const
+{
+	if (m_x <= m_minX || m_x >= m_maxX || m_y <= m_minY || m_y >= m_maxX)
+	{
+		return true;
+	}
+	return false;
 }
 
 std::ostream & operator<<(std::ostream & o, Movement const & i)

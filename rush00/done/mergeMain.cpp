@@ -34,6 +34,7 @@ int main()
 	SpaceShip	*ship = (SpaceShip*)game->getSpaceObject(0); 
 	ship->getMovement()->setX(20);
 	ship->getMovement()->setY(20);
+	ship->setLife(3);
 
 	AbstractObject *newProjectile;
 	int		createTime = 0;
@@ -59,7 +60,7 @@ int main()
 			game->pushSpaceObject(newProjectile);
 		}
 
-		if (createTime++ % 10 == 0)
+		if (createTime++ % game->getSpawnRate() == 0)
 		{
 			AbstractObject *enemy = new Enemy(1,50, 20);
 			game->pushSpaceObject(enemy);
@@ -72,11 +73,19 @@ int main()
 				{
 					spaceObjects[i]->getMovement()->goForward();
 				}
-				else if (spaceObjects[i]->getType() == AbstractObject::ENEMY && createTime % 10 == 0)
+				else if (spaceObjects[i]->getType() == AbstractObject::ENEMY
+						&& (createTime % game->getSpawnRate() == 0))
 				{
 					spaceObjects[i]->getMovement()->goForward();
 				}
-				d->print_obj(d->get_win(), spaceObjects[i]->getMovement()->getX(), spaceObjects[i]->getMovement()->getY(), 0);
+				if (spaceObjects[i]->getMovement()->checkLimits())
+				{
+					game->deleteSpaceObject(i);
+				}
+				else
+				{
+					d->print_obj(d->get_win(), spaceObjects[i]->getMovement()->getX(), spaceObjects[i]->getMovement()->getY(), 0);
+				}
 			}
 		}
 		menu->print_life(ship);
@@ -87,5 +96,6 @@ int main()
 	endwin();
 	delete d;
 	delete ctrl;
-	delete	menu;
+	delete menu;
+	delete game;
 }

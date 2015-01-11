@@ -48,6 +48,8 @@ class Movement
 
 		void	randMove();
 
+		bool	checkLimits() const;
+
 		static const std::string typeDirNames[];
 
 	private:

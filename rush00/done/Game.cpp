@@ -1,7 +1,7 @@
 #include "Game.hpp"
 #include "SpaceShip.hpp"
 
-Game::Game() : m_spaceObjects(new AbstractObject*[100])
+Game::Game() : m_score(0), m_spawnRate(10), m_spaceObjects(new AbstractObject*[100])
 {
 	m_spaceObjects[0] = new SpaceShip("Battlestar", 1, 20, HEIGHT/2);
 	for (int i = 1 ; i < 100 ; ++i)
@@ -10,7 +10,7 @@ Game::Game() : m_spaceObjects(new AbstractObject*[100])
 	}
 }
 
-Game::Game(Game const & src) : m_spaceObjects(new AbstractObject*[100])
+Game::Game(Game const & src) : m_score(0), m_spawnRate(10), m_spaceObjects(new AbstractObject*[100])
 {
 	m_spaceObjects[0] = new SpaceShip("Battlestar", 1, 0, HEIGHT/2);
 	for (int i = 1 ; i < 100 ; ++i)
@@ -22,6 +22,14 @@ Game::Game(Game const & src) : m_spaceObjects(new AbstractObject*[100])
 
 Game::~Game()
 {
+	for (int i = 0 ; i < 100 ; ++i)
+	{
+		if (m_spaceObjects[i])
+		{
+			delete m_spaceObjects[i];
+			m_spaceObjects[i] = NULL;
+		}
+	}
 }
 
 Game & Game::operator=(Game const & rhs)
@@ -31,6 +39,37 @@ Game & Game::operator=(Game const & rhs)
 	}
 	return (*this);
 }
+
+void	Game::setScore(unsigned int const score)
+{
+	m_score = score;
+}
+
+void	Game::setSpawnRate(unsigned int const spawnRate)
+{
+	m_spawnRate = spawnRate;
+}
+
+void	Game::setSpaceObjects(AbstractObject **& spaceObjects)
+{
+	m_spaceObjects = spaceObjects;
+}
+
+unsigned int const	Game::getScore() const
+{
+	return m_score;
+}
+
+unsigned int const	Game::getSpawnRate() const
+{
+	return m_spawnRate;
+}
+
+AbstractObject		**Game::getSpaceObjects() const
+{
+	return m_spaceObjects;
+}
+
 
 bool	Game::checkCollision()
 {
@@ -80,11 +119,29 @@ bool	Game::checkCollision()
 	{
 		if (destroyed[i] != -1)
 		{
+			if (m_spaceObjects[i]->getType() == AbstractObject::ENEMY)
+			{
+				m_score += 10;
+			}
+
 			if (i == 0)
 			{
-				end = true;
+				int newLife = m_spaceObjects[i]->getLife() - 1;
+
+				if (newLife == 0)
+				{
+					deleteSpaceObject(i);
+					end = true;
+				}
+				else
+				{
+					m_spaceObjects[i]->setLife(newLife);
+				}
 			}
-			deleteSpaceObject(i);
+			else
+			{
+				deleteSpaceObject(i);
+			}
 		}
 	}
 	return (end);
@@ -94,9 +151,9 @@ void	Game::deleteSpaceObject(unsigned int index)
 {
 	if (m_spaceObjects[index])
 	{
-		/*
+		/*	
 		std::cout << m_spaceObjects[index]->getName() << std::endl;
-		*/
+		*/	
 		delete m_spaceObjects[index];
 		m_spaceObjects[index] = NULL;
 	}
@@ -117,16 +174,6 @@ void	Game::pushSpaceObject(AbstractObject *& spaceObject)
 			break ;
 		}
 	}
-}
-
-void	Game::setSpaceObjects(AbstractObject **& spaceObjects)
-{
-	m_spaceObjects = spaceObjects;
-}
-
-AbstractObject  **Game::getSpaceObjects() const
-{
-	return m_spaceObjects;
 }
 
 std::ostream & operator<<(std::ostream & o, Game const & i)

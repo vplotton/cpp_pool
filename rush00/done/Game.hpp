@@ -17,16 +17,23 @@ class Game
 
 		Game & operator=(Game const & rhs);
 
+		void	setScore(unsigned int const score);
+		void	setSpawnRate(unsigned int const spawnRate);
+		void	setSpaceObjects(AbstractObject **& spaceObjects);
+		unsigned int const	getScore() const;
+		unsigned int const	getSpawnRate() const;
+		AbstractObject		**getSpaceObjects() const;
+
 		bool			checkCollision();
 		void			deleteSpaceObject(unsigned int index);
 		void			pushSpaceObject(AbstractObject *& spaceObject);
-		void			setSpaceObjects(AbstractObject **& spaceObjects);
 		AbstractObject	*getSpaceObject(int index) const;
-		AbstractObject	**getSpaceObjects() const;
 
 		static unsigned int	m_availableIndex;
 
 	private:
+		unsigned int	m_score;
+		unsigned int	m_spawnRate;
 		AbstractObject	**m_spaceObjects;
 
 };
