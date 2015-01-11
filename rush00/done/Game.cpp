@@ -56,11 +56,13 @@ bool	Game::checkCollision()
 				continue ;
 			}
 
+			/*
 			std::cout << (*m_spaceObjects[i]->getMovement()
 				== *m_spaceObjects[j]->getMovement() ? "true" : "false")
 					<< std::endl;
 			std::cout << "i: " << i << std::endl;
 			std::cout << "j: " << j << std::endl;
+			*/
 			if (*m_spaceObjects[i]->getMovement()
 					== *m_spaceObjects[j]->getMovement() && i != j)
 			{
@@ -92,7 +94,9 @@ void	Game::deleteSpaceObject(unsigned int index)
 {
 	if (m_spaceObjects[index])
 	{
+		/*
 		std::cout << m_spaceObjects[index]->getName() << std::endl;
+		*/
 		delete m_spaceObjects[index];
 		m_spaceObjects[index] = NULL;
 	}

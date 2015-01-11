@@ -65,8 +65,6 @@ Movement & Movement::operator=(Movement const & rhs)
 
 bool	Movement::operator==(Movement const & rhs)
 {
-	std::cout << "x: " << m_x << " | " << rhs.m_x << std::endl;
-	std::cout << "y: " << m_y << " | " << rhs.m_y << std::endl;
 	return (m_x == rhs.m_x && m_y == rhs.m_y ? true : false);
 }
 

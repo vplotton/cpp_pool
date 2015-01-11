@@ -22,8 +22,9 @@ Controller & Controller::operator=(Controller const & rhs)
 	return (*this);
 }
 
-void Controller::ft_get_input(int key, Display  *& d, SpaceShip *&ship)
+AbstractObject *Controller::ft_get_input(int key, Display  *& d, SpaceShip *&ship)
 {
+	AbstractObject *newProjectile = NULL;
 	switch(key)
 	{	case KEY_LEFT:
 			ship->getMovement()->goLeft();
@@ -46,5 +47,11 @@ void Controller::ft_get_input(int key, Display  *& d, SpaceShip *&ship)
 						            d->print_obj(d->get_win(), ship->getMovement()->getX(), ship->getMovement()->getY(), 0);
 			wrefresh(d->get_win());
 			break;	
+		case KEY_BACKSPACE:
+		case KEY_ENTER:
+		case KEY_DC:
+			newProjectile = ship->getWeapon()->shoot(ship->getMovement());
+			break ;
 	}
+	return newProjectile;
 }
