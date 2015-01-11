@@ -32,6 +32,8 @@ int main()
 
 	Game		*game = new Game;
 	SpaceShip	*ship = (SpaceShip*)game->getSpaceObject(0); 
+	ship->getMovement()->setX(20);
+	ship->getMovement()->setY(20);
 
 	AbstractObject *newProjectile;
 	int		createTime = 0;
@@ -59,7 +61,7 @@ int main()
 
 		if (createTime++ % 10 == 0)
 		{
-			AbstractObject *enemy = new Enemy(1,70, 50);
+			AbstractObject *enemy = new Enemy(1,50, 20);
 			game->pushSpaceObject(enemy);
 		}
 		for (int i = 1; i < 100 ; ++i)
