@@ -1,11 +1,5 @@
 #include "Bureaucrat.hpp"
 
-Bureaucrat::Bureaucrat() :
-	m_grade(1), m_name("* no name *")
-{
-}
-
-
 Bureaucrat::Bureaucrat(int grade, std::string name) :
 	m_grade(grade), m_name(name)
 {
@@ -19,7 +13,12 @@ Bureaucrat::Bureaucrat(int grade, std::string name) :
 	}
 }
 
-Bureaucrat::Bureaucrat(Bureaucrat const & src) : m_grade(src.getGrade()), m_name(src.getName())
+Bureaucrat::Bureaucrat()
+{
+}
+
+Bureaucrat::Bureaucrat(Bureaucrat const & src) : 
+	m_grade(src.getGrade()), m_name(src.getName())
 {
 	*this = src;
 }
@@ -32,7 +31,7 @@ Bureaucrat & Bureaucrat::operator=(Bureaucrat const & rhs)
 {
 	if (this != &rhs)
 	{
-		m_grade = rhs.m_grade;
+		m_grade = rhs.getGrade();
 	}
 	return (*this);
 }
@@ -75,24 +74,55 @@ void		Bureaucrat::decreaseGrade()
 	}
 }
 
-Bureaucrat::GradeTooHighException::GradeTooHighException()
+Bureaucrat::GradeTooHighException::GradeTooHighException() :
+	m_msg("Bureaucrat::GradeTooHighException")
 {
+}
+
+Bureaucrat::GradeTooHighException::GradeTooHighException(GradeTooHighException const & src)
+{
+	*this = src;
+}
+
+Bureaucrat::GradeTooHighException::~GradeTooHighException() throw()
+{
+}
+
+Bureaucrat::GradeTooHighException &Bureaucrat::GradeTooHighException::operator=(Bureaucrat::GradeTooHighException const & rhs)
+{
+	(void)rhs;
+	return *this;
 }
 
 const char*	Bureaucrat::GradeTooHighException::what() const throw()
 {
-	return "Grade Too High";
+	return m_msg;
 }
 
-Bureaucrat::GradeTooLowException::GradeTooLowException()
+Bureaucrat::GradeTooLowException::GradeTooLowException() :
+	m_msg("Bureaucrat::GradeTooLowException")
 {
+}
+
+Bureaucrat::GradeTooLowException::GradeTooLowException(Bureaucrat::GradeTooLowException const & src)
+{
+	*this = src;
+}
+
+Bureaucrat::GradeTooLowException::~GradeTooLowException() throw()
+{
+}
+
+Bureaucrat::GradeTooLowException	&Bureaucrat::GradeTooLowException::operator=(Bureaucrat::GradeTooLowException const & rhs)
+{
+	(void)rhs;
+	return *this;
 }
 
 const char* 	Bureaucrat::GradeTooLowException::what() const throw()
 {
-	return "Grade Too Low";
+	return m_msg;
 }
-
 
 
 std::ostream & operator<<(std::ostream & o, Bureaucrat const & i)

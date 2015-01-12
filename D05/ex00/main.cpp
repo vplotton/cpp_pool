@@ -2,24 +2,9 @@
 
 int		main()
 {
-	Bureaucrat	*bureaucratDefault = new Bureaucrat();
-	Bureaucrat	*bureaucratArgs = new Bureaucrat(150, "Alain");
-	Bureaucrat	*bureaucratCopy = new Bureaucrat(*bureaucratArgs);
-
-	std::cout << "Default constructor: ";
-	std::cout << *bureaucratDefault;
-	std::cout << std::endl;
+	Bureaucrat	*bureaucratArgs = new Bureaucrat(1, "Alain");
 
 	std::cout << "Args constructor: ";
-	std::cout << *bureaucratArgs;
-	std::cout << std::endl;
-	
-	std::cout << "Copy constructor: ";
-	std::cout << *bureaucratCopy;
-	std::cout << std::endl;
-
-	std::cout << "Increase grade: ";
-	bureaucratArgs->increaseGrade();
 	std::cout << *bureaucratArgs;
 	std::cout << std::endl;
 
@@ -28,18 +13,28 @@ int		main()
 	std::cout << *bureaucratArgs;
 	std::cout << std::endl;
 
-	std::cout << "Try to increase " << bureaucratDefault->getName() << "'s grade: " << std::endl;
+	std::cout << "Increase grade: ";
+	bureaucratArgs->increaseGrade();
+	std::cout << *bureaucratArgs;
+	std::cout << std::endl;
+
+	std::cout << "Try to increase " << bureaucratArgs->getName() << "'s grade: " << std::endl;
 	try
 	{
-		bureaucratDefault->increaseGrade();
+		bureaucratArgs->increaseGrade();
 	}
 	catch (std::exception &e)
 	{
 		std::cout << e.what() << "\n";
 	}
 	std::cout << "Check if grade not increased: ";
-	std::cout << *bureaucratDefault;
+	std::cout << *bureaucratArgs;
 	std::cout << std::endl;
+
+	while (bureaucratArgs->getGrade() < 150)
+	{
+		bureaucratArgs->decreaseGrade();
+	}
 
 	std::cout << "Try to decrease " << bureaucratArgs->getName() << "'s grade: " << std::endl;
 	try
@@ -95,8 +90,7 @@ int		main()
 	std::cout << std::endl;
 
 
-	delete bureaucratDefault;
 	delete bureaucratArgs;
-	delete bureaucratCopy;
+
 	return 0;
 }
