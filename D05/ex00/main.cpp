@@ -18,39 +18,39 @@ int		main()
 	std::cout << *bureaucratCopy;
 	std::cout << std::endl;
 
-	std::cout << "Decrease grade: ";
-	bureaucratArgs->decreaseGrade();
-	std::cout << *bureaucratArgs;
-	std::cout << std::endl;
-
 	std::cout << "Increase grade: ";
 	bureaucratArgs->increaseGrade();
 	std::cout << *bureaucratArgs;
 	std::cout << std::endl;
 
-	std::cout << "Try to decrease 's grade: " << std::endl;
+	std::cout << "Decrease grade: ";
+	bureaucratArgs->decreaseGrade();
+	std::cout << *bureaucratArgs;
+	std::cout << std::endl;
+
+	std::cout << "Try to increase " << bureaucratDefault->getName() << "'s grade: " << std::endl;
 	try
 	{
-		bureaucratDefault->decreaseGrade();
+		bureaucratDefault->increaseGrade();
 	}
 	catch (std::exception &e)
 	{
 		std::cout << e.what() << "\n";
 	}
-	std::cout << "Check if grade decreased: ";
+	std::cout << "Check if grade not increased: ";
 	std::cout << *bureaucratDefault;
 	std::cout << std::endl;
 
-	std::cout << "Try to increase Alain's grade: " << std::endl;
+	std::cout << "Try to decrease " << bureaucratArgs->getName() << "'s grade: " << std::endl;
 	try
 	{
-		bureaucratArgs->increaseGrade();
+		bureaucratArgs->decreaseGrade();
 	}
 	catch (std::exception &e)
 	{
 		std::cout << e.what() << "\n";
 	}
-	std::cout << "Check if grade increased: ";
+	std::cout << "Check if grade not decreased: ";
 	std::cout << *bureaucratArgs;
 	std::cout << std::endl;
 
@@ -58,7 +58,7 @@ int		main()
 	Bureaucrat	*bureaucratTooHigh = NULL;
 	try
 	{
-		bureaucratTooHigh = new Bureaucrat(151, "TooHigh");
+		bureaucratTooHigh = new Bureaucrat(0, "TooHigh");
 	}
 	catch (std::exception &e)
 	{
@@ -78,7 +78,7 @@ int		main()
 	Bureaucrat	*bureaucratTooLow = NULL;
 	try
 	{
-		bureaucratTooLow = new Bureaucrat(0, "TooLow");
+		bureaucratTooLow = new Bureaucrat(151, "TooLow");
 	}
 	catch (std::exception &e)
 	{
