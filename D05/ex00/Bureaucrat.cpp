@@ -19,7 +19,7 @@ Bureaucrat::Bureaucrat(int grade, std::string name) :
 	}
 }
 
-Bureaucrat::Bureaucrat(Bureaucrat const & src)
+Bureaucrat::Bureaucrat(Bureaucrat const & src) : m_grade(src.getGrade()), m_name(src.getName())
 {
 	*this = src;
 }
@@ -33,7 +33,6 @@ Bureaucrat & Bureaucrat::operator=(Bureaucrat const & rhs)
 	if (this != &rhs)
 	{
 		m_grade = rhs.m_grade;
-		m_name = rhs.m_name;
 	}
 	return (*this);
 }
@@ -43,7 +42,7 @@ int		Bureaucrat::getGrade() const
 	return m_grade;
 }
 
-std::string	Bureaucrat::getName() const
+std::string const	&Bureaucrat::getName() const
 {
 	return m_name;
 }
