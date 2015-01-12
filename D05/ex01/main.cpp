@@ -6,10 +6,11 @@ int		main()
 	Bureaucrat	*bureaucrat = new Bureaucrat(35, "Alain");
 
 	Form		*formDefault = new Form();
-	Form		*formArgs = new Form(34, "contract");
+	Form		*formArgs = new Form(34, 40, "contract");
 	Form		*formCopy = new Form(*formArgs);
 
 	std::cout << "Bureaucrat: " << *bureaucrat;
+	std::cout << std::endl;
 
 	std::cout << "Default constructor: ";
 	std::cout << *formDefault;

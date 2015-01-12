@@ -10,14 +10,15 @@ class Form
 {
 	public:
 		Form();
-		Form(int, std::string);
+		Form(int, int, std::string);
 		Form(Form const & src);
 		~Form();
 
 		Form & operator=(Form const & rhs);
 
 		bool const		&getSign() const;
-		int const		&getGrade() const;
+		int const		&getGradeToSign() const;
+		int const		&getGradeToExecute() const;
 		std::string const	&getName() const;
 
 		void		signForm(Bureaucrat const & bureaucrat);
@@ -34,6 +35,7 @@ class Form
 	private:
 		bool		m_signed;
 		int const		m_gradeToSign;
+		int const		m_gradeToExecute;
 		std::string const	m_name;
 
 };
