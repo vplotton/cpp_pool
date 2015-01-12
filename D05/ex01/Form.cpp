@@ -1,4 +1,5 @@
 #include "Form.hpp"
+#include "Bureaucrat.hpp"
 
 Form::Form() :
 	m_signed(false), m_gradeToSign(1), m_gradeToExecute(1), m_name("* no name *")
@@ -56,53 +57,52 @@ std::string const	&Form::getName() const
 	return m_name;
 }
 
-void		Form::signForm(Bureaucrat const & bureaucrat)
+void		Form::beSigned(Bureaucrat const & bureaucrat)
 {
-	try
+	if (bureaucrat.getGrade() > m_gradeToSign)
 	{
-		if (bureaucrat.getGrade() > m_gradeToSign)
-		{
-			throw (GradeTooLowException());
-		}
-		else
-		{
-			m_signed = true;
-			std::cout << bureaucrat.getName()
-				<< " signs "
-				<< m_name
-				<< std::endl;
-		}
+		throw (GradeTooLowException());
 	}
-	catch (std::exception &e)
+	else
 	{
-		std::cout << bureaucrat.getName()
-			<< " cannot sign "
-			<< m_name
-			<< " because "
-			<< e.what()
-			<< std::endl;
+		m_signed = true;
 	}
 }
 
-Form::GradeTooLowException::GradeTooLowException()
+Form::GradeTooLowException::GradeTooLowException() :
+	        m_msg("Form::GradeTooLowException")
 {
 }
 
-const char*	Form::GradeTooLowException::what() const throw()
+Form::GradeTooLowException::GradeTooLowException(Form::GradeTooLowException const & src)
 {
-	        return "grade is too low";
+	        *this = src;
 }
 
+Form::GradeTooLowException::~GradeTooLowException() throw()
+{
+}
+
+Form::GradeTooLowException        &Form::GradeTooLowException::operator=(Form::GradeTooLowException const & rhs)
+{
+	        (void)rhs;
+		        return *this;
+}
+
+const char*     Form::GradeTooLowException::what() const throw()
+{
+	        return m_msg;
+}
 
 std::ostream & operator<<(std::ostream & o, Form const & i)
 {
 	o << i.getName()
-		<< ", grade to sign: "
+		<< " - grade to sign [ "
 		<< i.getGradeToSign()
-		<< ", grade to execute: "
+		<< " ] - grade to execute: [ "
 		<< i.getGradeToExecute()
-		<< ", "
+		<< " ] [ "
 		<< (i.getSign() == true ? "signed" : "not signed")
-		<< std::endl;;
+		<< " ]" << std::endl;;
 	return (o);
 }
