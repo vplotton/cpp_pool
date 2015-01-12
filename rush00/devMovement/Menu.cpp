@@ -1,6 +1,5 @@
 #include "Menu.hpp"
-#include <sstream>
-#include <string>
+
 Menu::Menu()
 {
 }
@@ -63,30 +62,6 @@ void    Menu::print_life(SpaceShip *ship)
 	{
 		mvwaddch(_menu, y, x, ' ');
 	}
-}
-
-void    Menu::print_score(Game *g)
-{
-	int x = 50;
-	int y = 1;
-	//int i = 0;
-	int number = (int)g->getScore();
-	std::stringstream strs;
-	strs << number;
-	std::string temp_str = strs.str();
-	char* char_type = (char*) temp_str.c_str();
-	mvwprintw(_menu, y, x, "SCORE : ");
-	x = 61;
-//	for( i = 0; i < number; i++)
-//	{
-		mvwprintw(_menu, y, x, char_type);
-		//std::cerr << char_type << std::endl;
-//		x++;
-//	}
-//	for (i = x; i < x + 10 ;i++)
-//	{
-//		mvwaddch(_menu, y, x, ' ');
-//	}
 }
 
 void Menu::destroy_menu(WINDOW *menu)

@@ -77,7 +77,7 @@ void	Display::print_obj(WINDOW *win, int x, int y, int type)
 	}else if (type == AbstractObject::PROJECTILE)
 	{
 		start_color();
-		init_pair(3, COLOR_GREEN, COLOR_BLACK);
+		init_pair(3, COLOR_BLUE, COLOR_BLACK);
 		wattron(win, COLOR_PAIR(3));
 		mvwaddch(win, y, x, ACS_HLINE);
 		wattroff(win, COLOR_PAIR(3));
