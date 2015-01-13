@@ -1,6 +1,5 @@
 CC		= g++
 CFLAGS	=-Wall -Wextra -Werror
-LIBS	=-lncurses
 SRC = main.cpp
 
 OBJ= $(SRC:.cpp=.o)
@@ -12,7 +11,7 @@ NAME= serializer
 all: $(NAME)
 
 $(NAME): $(OBJ)
-	$(CC) -o $(NAME) $(OBJ) $(LIBS)
+	$(CC) -o $(NAME) $(OBJ)
 	echo "\t\xF0\x9F\x8F\x81   Compiling \033[35m$(NAME) \033[0mDONE!"
 
 %.o: %.cpp

@@ -17,9 +17,11 @@ char	*genRandom()
 		"0123456789"
 		"ABCDEFGHIJKLMNOPQRSTUVWXYZ"
 		"abcdefghijklmnopqrstuvwxyz";
+
 	char	*output = new char[8];
 
 	srand ( time(NULL) * last );
+
 	for (int i = 0; i < 8; ++i)
 	{
 		last = std::rand();
@@ -71,6 +73,7 @@ void	*serialize()
 Data	*deserialize(void *raw)
 {
 	Data		*data = new Data;
+
 	std::string	tmp(reinterpret_cast<char*>(raw));
 
 	data->s1 = tmp.substr(0, 8);
