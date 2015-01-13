@@ -86,6 +86,7 @@ int		main()
 
 	std::string	tmp(reinterpret_cast<char*>(raw));
 
+	std::cout << std::endl;
 	std::cout << "Raw data - " << tmp << std::endl;
 
 	Data	*data = deserialize(raw);
@@ -96,6 +97,8 @@ int		main()
 	std::cout << "Data s1 - " << data->s1 << std::endl;
 	std::cout << "Data n - " << data->n << std::endl;
 	std::cout << "Data s2 - " << data->s2 << std::endl;
+
+	std::cout << std::endl;
 
 	return 0;
 }
