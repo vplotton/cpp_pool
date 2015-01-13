@@ -1,18 +1,5 @@
-# **************************************************************************** #
-#                                                                              #
-#                                                         :::      ::::::::    #
-#    Makefile                                           :+:      :+:    :+:    #
-#                                                     +:+ +:+         +:+      #
-#    By: sbres <sbres@student.42.fr>                +#+  +:+       +#+         #
-#                                                 +#+#+#+#+#+   +#+            #
-#    Created: 2015/01/13 20:53:45 by sbres             #+#    #+#              #
-#    Updated: 2015/01/13 21:01:20 by sbres            ###   ########.fr        #
-#                                                                              #
-# **************************************************************************** #
-
 CC= g++
 FLAGS=-Wall -Wextra -Werror
-LIBS=-lncurses
 SRC=main.cpp \
 	Scalar.cpp
 
@@ -25,7 +12,7 @@ NAME= convert
 all: $(NAME)
 
 $(NAME): $(OBJ)
-		$(CC) -o $(NAME) $(OBJ) $(LIBS)
+		$(CC) -o $(NAME) $(OBJ)
 		echo "\t\xF0\x9F\x8F\x81   Compiling \033[35m$(NAME) \033[0mDONE!"
 
 %.o: %.cpp
