@@ -41,6 +41,7 @@ int main()
 	int		createTime = 0;
 	while((ch = getch()) != KEY_F(1))
 	{
+		menu->set_menu(menu->init_menu());
 		if (game->checkCollision() == true)
 		{
 			break ;
@@ -91,10 +92,10 @@ int main()
 				}
 			}
 		}
+		menu->print_score(game);
 		menu->print_life(ship);
 		wrefresh(d->get_win());
 		wrefresh(menu->get_menu());
-		menu->print_score(game);
 		usleep(100000);
 		menu->destroy_menu(menu->get_menu());
 	}

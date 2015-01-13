@@ -1,7 +1,7 @@
 #include "PlayerMovement.hpp"
 
-# define WIDTH 100
-# define HEIGHT 100
+# define WIDTH  98
+# define HEIGHT 48
 
 PlayerMovement::PlayerMovement() :
 	AbstractMovement(0, 0, 1)

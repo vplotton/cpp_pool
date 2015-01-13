@@ -4,9 +4,8 @@
 #include "AbstractObject.hpp"
 #include <iostream>
 
-
-# define WIDTH 100
-# define HEIGHT 100
+# define WIDTH  98
+# define HEIGHT 48
 
 class Game
 {

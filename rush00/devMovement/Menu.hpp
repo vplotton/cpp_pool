@@ -5,6 +5,7 @@
 #include <ncurses.h>
 #include "Display.hpp"
 #include "SpaceShip.hpp"
+#include "Game.hpp"
 
 class Menu
 {
@@ -17,7 +18,7 @@ class Menu
 		WINDOW 	*get_menu();
 		void 	set_menu(WINDOW* menu);
 		void	print_life(SpaceShip *ship);
-		void	print_score();
+		void	print_score(Game *g);
 		WINDOW*	init_menu();
 		void	destroy_menu(WINDOW *menu);
 	private:

@@ -131,7 +131,7 @@ void	Game::createWave()
 
 	if (m_turn % m_spawnRate == 0 && m_nbEnemies < m_maxEnemies)
 	{
-		AbstractObject *enemy = new Enemy(1, 40, 20);
+		AbstractObject *enemy = new Enemy(1, 80, 20);
 		if (m_wave == 0)
 		{
 			((EnemyMovement*)enemy->getMovement())->setPatternSize((unsigned int)12);

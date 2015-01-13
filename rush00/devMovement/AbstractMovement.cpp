@@ -1,5 +1,8 @@
 #include "AbstractMovement.hpp"
 
+# define WIDTH  98
+# define HEIGHT 48
+
 typedef  void (AbstractMovement::*Func)();
 
 std::string const AbstractMovement::typeDirNames[] =
@@ -19,9 +22,6 @@ Func AbstractMovement::func[] =
 	&AbstractMovement::goLeft,
 	&AbstractMovement::goRight
 };
-
-# define WIDTH 100
-# define HEIGHT 100
 
 AbstractMovement::AbstractMovement() : 
 	m_x(0), m_y(0), m_speed(0)

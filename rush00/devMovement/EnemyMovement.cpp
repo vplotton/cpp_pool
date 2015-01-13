@@ -2,8 +2,8 @@
 #include <cstdlib>
 #include <ctime>
 
-# define WIDTH 100
-# define HEIGHT 100
+# define WIDTH  98
+# define HEIGHT 48
 
 EnemyMovement::EnemyMovement() :
 	AbstractMovement(0, 0, 1)

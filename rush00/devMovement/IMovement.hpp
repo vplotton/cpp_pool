@@ -1,7 +1,7 @@
 #ifndef IMOVEMENT_HPP
 # define IMOVEMENT_HPP
 
-#include <string>
+# include <string>
 
 class IMovement
 {
