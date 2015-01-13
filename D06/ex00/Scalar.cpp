@@ -1,6 +1,6 @@
 #include "Scalar.hpp"
-#include <math.h>
-#include <limits.h>
+#include <cmath>
+#include <climits>
 
 Scalar::Scalar(): _value(0){
 
@@ -39,7 +39,7 @@ std::ostream & operator<<(std::ostream & o, Scalar const & i) {
             "\\18","\\19","\\20","\\21","\\22","\\23","\\24",
             "\\25","\\26","\\27","\\28","\\29","\\30","\\31", "\\32"};
     double value = i.get_value();
-    if (isnan(value) || isinf(value))
+    if (std::isnan(value) || std::isinf(value))
     {
         o << "char: impossible" << std::endl;
         o << "int: impossible" << std::endl;
