@@ -3,7 +3,7 @@ CFLAGS	=-Wall -Wextra -Werror
 SRC = iter.cpp
 
 OBJ= $(SRC:.cpp=.o)
-NAME= iter
+NAME= whatever
 
 .PHONY: clean fclean re all
 	.SILENT:
