@@ -21,18 +21,12 @@ class Array
 		{
 			m_size = size;
 			m_array = new T[m_size];
-			try
+			T	*init = new T();
+			for (unsigned int i = 0 ; i < size ; ++i)
 			{
-				for (unsigned int i = 0 ; i < size ; ++i)
-				{
-					T	*init = new T();
-					m_array[i] = *init;
-					delete init;
-				}
+				m_array[i] = *init;
 			}
-			catch (...)
-			{
-			}
+			delete init;
 		}
 
 		Array(Array const & src)
@@ -47,12 +41,12 @@ class Array
 
 		Array	&operator=(Array const & rhs)
 		{
-				m_size = rhs.m_size;
-				m_array = new T[m_size];
-				for (unsigned int i = 0 ; i < m_size ; ++i)
-				{   
-					m_array[i] = rhs.m_array[i];
-				}   
+			m_size = rhs.m_size;
+			m_array = new T[m_size];
+			for (unsigned int i = 0 ; i < m_size ; ++i)
+			{   
+				m_array[i] = rhs.m_array[i];
+			}   
 			return *this;
 		}
 
