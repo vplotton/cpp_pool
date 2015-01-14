@@ -24,10 +24,12 @@ T const & max(T const & val1, T const & val2)
 
 int		main()
 {
-	int	intA = 1;
-	int	intB = 9;
-	float	floatA = 4.2;
-	float	floatB = 8.2;
+	int		intA = 1;
+	int		intB = 9;
+	float		floatA = 4.2;
+	float		floatB = 8.2;
+	std::string	s1("ababa");
+	std::string	s2("ololo");
 
 	std::cout << "==== Test Swap ===" << std::endl;
 	std::cout << "[ TEST ] intA == " << intA << " && intB == " << intB << std::endl;
@@ -41,12 +43,20 @@ int		main()
 	std::cout << "floatA == " << floatA << std::endl;
 	std::cout << "floatB == " << floatB << std::endl;
 	std::cout << std::endl;
+
+	std::cout << "[ TEST ] s1 == " << s1 << " && s2 == " << s2 << std::endl;
+	swap(s1, s2);
+	std::cout << "s1 == " << s1 << std::endl;
+	std::cout << "s2 == " << s2 << std::endl;
 	std::cout << std::endl;
+	std::cout << std::endl;
+
 
 	std::cout << "==== Test Min ===" << std::endl;
 	std::cout << "[ TEST ] intA == " << intA << " && intB == " << intB << std::endl;
 	std::cout << "Min value: " << min<int>(intA, intB) << std::endl;
 	std::cout << std::endl;
+
 
 	int	intC = 1;
 	int	intD = 1;
@@ -65,6 +75,7 @@ int		main()
 	std::cout << std::endl;
 	std::cout << std::endl;
 
+
 	std::cout << "==== Test Max ===" << std::endl;
 	std::cout << "[ TEST ] intA == " << intA << " && intB == " << intB << std::endl;
 	std::cout << "Max value: " << max<int>(intA, intB) << std::endl;
@@ -81,4 +92,6 @@ int		main()
 	std::cout << "[ TEST ] floatC == " << floatC << " && floatD == " << floatD << std::endl;
 	std::cout << "Max value: " << max<float>(floatC, floatD) << std::endl;
 	std::cout << std::endl;
+	std::cout << std::endl;
+
 }
