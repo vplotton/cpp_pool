@@ -1,6 +1,6 @@
 CC		= g++
 CFLAGS	=-Wall -Wextra -Werror
-SRC = iter.cpp
+SRC = whatever.cpp
 
 OBJ= $(SRC:.cpp=.o)
 NAME= whatever
