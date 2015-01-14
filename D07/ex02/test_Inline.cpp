@@ -1,6 +1,3 @@
-#ifndef ARRAY_HPP
-# define ARRAY_HPP
-
 #include <iostream>
 #include <stdexcept>
 
@@ -56,4 +53,17 @@ class Array
 		T       *m_array;
 };
 
-#endif /* !ARRAY_HPP */
+
+int		main()
+{
+	for (int i = 0 ; i < 1000 ; ++i)
+	{
+		Array<int>	*array = new Array<int>(1000000);
+		for (int i = 0 ; i < 1000000 ; ++i)
+		{
+			(*array)[i] = i;
+		}
+		array->size();
+		delete array;
+	}
+}
