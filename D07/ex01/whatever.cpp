@@ -19,6 +19,8 @@ void	ft_decrement(T &a)
 {
 	--a;
 }
+template void ft_decrement<float>(float & a);
+
 
 int		main()
 {
