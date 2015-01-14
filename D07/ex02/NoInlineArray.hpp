@@ -1,5 +1,7 @@
-#include <iostream>
-#include <stdexcept>
+#ifndef NOINLINEARRAY_HPP
+# define NOINLINEARRAY_HPP
+
+# include <stdexcept>
 
 template <typename T>
 class Array
@@ -64,16 +66,4 @@ class Array
 		unsigned int    m_size;
 };
 
-int		main()
-{
-	for (int i = 0 ; i < 1000 ; ++i)
-	{
-		Array<int>  *array = new Array<int>(1000000);
-		for (int i = 0 ; i < 1000000 ; ++i)
-		{
-			(*array)[i] = i;
-		}
-		array->size();
-		delete array;
-	}
-}
+#endif /* !NOINLINEARRAY_HPP */

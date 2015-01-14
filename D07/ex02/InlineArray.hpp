@@ -1,5 +1,7 @@
-#include <iostream>
-#include <stdexcept>
+#ifndef INLINEARRAY_HPP
+# define INLINEARRAY_HPP
+
+# include <stdexcept>
 
 template <typename T>
 class Array
@@ -9,12 +11,12 @@ class Array
 
 		inline explicit Array(unsigned int size) :
 			m_size(size), m_array(new T[m_size])
-	{
-		for (unsigned int i = 0 ; i < size ; ++i)
 		{
-			m_array[i] = T();
+			for (unsigned int i = 0 ; i < size ; ++i)
+			{
+				m_array[i] = T();
+			}
 		}
-	}
 
 		inline explicit Array(Array const & src)
 		{
@@ -27,6 +29,10 @@ class Array
 		{
 			if (this != &rhs)
 			{
+				if (m_array)
+				{
+					delete [] m_array;
+				}
 				m_size = rhs.m_size;
 				m_array = new T[m_size];
 				for (unsigned int i = 0 ; i < m_size ; ++i)
@@ -53,17 +59,4 @@ class Array
 		T       *m_array;
 };
 
-
-int		main()
-{
-	for (int i = 0 ; i < 1000 ; ++i)
-	{
-		Array<int>	*array = new Array<int>(1000000);
-		for (int i = 0 ; i < 1000000 ; ++i)
-		{
-			(*array)[i] = i;
-		}
-		array->size();
-		delete array;
-	}
-}
+#endif /* !INLINEARRAY_HPP */
