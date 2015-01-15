@@ -1,6 +1,8 @@
 #include "Span.hpp"
 #include <cstdlib>
+#include <iterator>
 #include <stdexcept>
+#include <algorithm>
 
 Span::Span()
 {
@@ -44,11 +46,12 @@ void	Span::addContainer(std::vector<int> & filler)
 		m_store.push_back(*it);
 		++count;
 	}
+	std::sort(m_store.begin(), m_store.end());
 }
 
 void	Span::addNumber(int const & number)
 {
-	if (m_sizeMax >= m_store.size())
+	if (m_sizeMax == m_store.size())
 	{
 		throw (std::runtime_error("Span::CannotStoreMoreElements"));
 	}
@@ -56,48 +59,23 @@ void	Span::addNumber(int const & number)
 	{
 		m_store.push_back(number);
 	}
+	std::sort(m_store.begin(), m_store.end());
 }
 
 unsigned int	Span::shortestSpan()
 {
-	unsigned int	diff;
-	unsigned int	minSpan = -1;
-	int		previous;
+	std::vector<int>::iterator	next = m_store.begin();
+	++next;
 
-	for (std::vector<int>::iterator it = m_store.begin() ; it != m_store.end() ; ++it)
-	{
-		if (it != m_store.begin())
-		{
-			diff = std::abs(*it - previous);
-			if (diff < minSpan)
-			{
-				minSpan = diff;
-			}
-		}
-		previous = *it;
-	}
-	return minSpan;
+	return (std::abs(*m_store.begin() - *next));
 }
 
 unsigned int	Span::longestSpan()
 {
-	unsigned int    diff;
-	unsigned int    maxSpan = 0;
-	int             previous;
+	std::vector<int>::iterator end = m_store.end();
+	--end;
 
-	for (std::vector<int>::iterator it = m_store.begin() ; it != m_store.end() ; ++it)
-	{   
-		if (it != m_store.begin())
-		{   
-			diff = std::abs(*it - previous);
-			if (diff > maxSpan)
-			{
-				maxSpan = diff;
-			}   
-		}   
-		previous = *it;
-	}   
-	return maxSpan;
+	return (std::abs(*end - *m_store.begin()));
 }
 
 std::ostream & operator<<(std::ostream & o, Span const & i)
