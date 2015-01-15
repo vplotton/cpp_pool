@@ -64,18 +64,43 @@ void	Span::addNumber(int const & number)
 
 unsigned int	Span::shortestSpan()
 {
-	std::vector<int>::iterator	next = m_store.begin();
-	++next;
+	if (m_store.size() < 2)
+	{
+		throw (std::runtime_error("Span::NotEnoughElements"));
+	}
+	unsigned int	diff;
+	unsigned int	minSpan = -1;
+	int		previous;
 
-	return (std::abs(*m_store.begin() - *next));
+	std::cout << minSpan << std::endl;
+	for (std::vector<int>::iterator it = m_store.begin() ;
+			it != m_store.end() ; ++it)
+	{
+		if (it != m_store.begin())
+		{
+			if (*it != previous)
+			{
+				diff = std::abs(*it - previous);
+				if (diff < minSpan)
+				{
+					std::cout << minSpan << std::endl;
+					minSpan = diff;
+				}
+			}
+		}
+		previous = *it;
+	}
+	return minSpan;
 }
 
 unsigned int	Span::longestSpan()
 {
-	std::vector<int>::iterator end = m_store.end();
-	--end;
+	if (m_store.size() < 2)
+	{
+		throw (std::runtime_error("Span::NotEnoughElements"));
+	}
 
-	return (std::abs(*end - *m_store.begin()));
+	return (std::abs(m_store.back() - m_store.front()));
 }
 
 std::ostream & operator<<(std::ostream & o, Span const & i)
