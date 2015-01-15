@@ -8,6 +8,8 @@ class Span
 {
 	public:
 		Span(unsigned int const &);
+		Span(Span const & src);
+		Span & operator=(Span const & rhs);
 		~Span();
 
 		std::vector<int>	getStore() const;
@@ -22,8 +24,6 @@ class Span
 		std::vector<int>	m_store;
 
 		Span();
-		Span(Span const & src);
-		Span & operator=(Span const & rhs);
 
 };
 

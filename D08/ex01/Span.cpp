@@ -12,9 +12,8 @@ Span::Span(unsigned int const & size) : m_sizeMax(size)
 {
 }
 
-Span::Span(Span const & src)
+Span::Span(Span const & src) : m_sizeMax(src.m_sizeMax), m_store(src.m_store)
 {
-	*this = src;
 }
 
 Span::~Span()
@@ -25,6 +24,8 @@ Span & Span::operator=(Span const & rhs)
 {
 	if (this != &rhs)
 	{
+		m_sizeMax = rhs.m_sizeMax;
+		m_store = std::vector<int>(rhs.m_store);
 	}
 	return (*this);
 }
@@ -72,23 +73,14 @@ unsigned int	Span::shortestSpan()
 	unsigned int	minSpan = -1;
 	int		previous;
 
-	std::cout << minSpan << std::endl;
-	for (std::vector<int>::iterator it = m_store.begin() ;
-			it != m_store.end() ; ++it)
+	for (std::vector<int>::iterator itA = m_store.begin() ; itA != m_store.end() ; ++itA)
 	{
-		if (it != m_store.begin())
+		diff = std::abs(*itA - previous);
+		if (diff < minSpan)
 		{
-			if (*it != previous)
-			{
-				diff = std::abs(*it - previous);
-				if (diff < minSpan)
-				{
-					std::cout << minSpan << std::endl;
-					minSpan = diff;
-				}
-			}
+			minSpan = diff;
 		}
-		previous = *it;
+		previous = *itA;
 	}
 	return minSpan;
 }
