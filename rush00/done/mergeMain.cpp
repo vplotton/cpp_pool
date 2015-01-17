@@ -49,12 +49,17 @@ int main()
 	//	menu->destroy_menu(menu->get_menu());
 		d->destroy_win(d->get_win());
 		d->set_win(d->ft_init_win());
+		menu->set_menu(menu->init_menu());
 		box(d->get_win(), 0 , 0);
 		box(menu->get_menu(), 0 , 0);
 
 		newProjectile = ctrl->ft_get_input(ch, d, ship);
-		d->print_obj(d->get_win(), ship->getMovement()->getX(), ship->getMovement()->getY(), 0);
-		
+		d->print_obj(d->get_win(),
+				ship->getMovement()->getX(),
+				ship->getMovement()->getY(),
+				ship->getType());
+	///////////////teeeeeeeeeeeeeeeeeeeeesstttt//////////
+	d->print_obj(d->get_win(), 25, 25, AbstractObject::BOSS);
 		if (newProjectile != NULL)
 		{
 			game->pushSpaceObject(newProjectile);
@@ -84,15 +89,19 @@ int main()
 				}
 				else
 				{
-					d->print_obj(d->get_win(), spaceObjects[i]->getMovement()->getX(), spaceObjects[i]->getMovement()->getY(), 0);
+					d->print_obj(d->get_win(), spaceObjects[i]->getMovement()->getX(), spaceObjects[i]->getMovement()->getY(), spaceObjects[i]->getType());
 				}
 			}
 		}
 		menu->print_life(ship);
+		menu->print_score(game);
 		wrefresh(d->get_win());
 		wrefresh(menu->get_menu());
-		usleep(100000);
+		usleep(10000);
+		menu->destroy_menu(menu->get_menu());
 	}
+	mvwprintw(d->get_win(), 25, 50," Merci d avoir participe a FT_retro : call of the great old one !");
+	usleep(5);
 	endwin();
 	delete d;
 	delete ctrl;

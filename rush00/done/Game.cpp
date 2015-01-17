@@ -55,12 +55,12 @@ void	Game::setSpaceObjects(AbstractObject **& spaceObjects)
 	m_spaceObjects = spaceObjects;
 }
 
-unsigned int const	Game::getScore() const
+unsigned int	Game::getScore() const
 {
 	return m_score;
 }
 
-unsigned int const	Game::getSpawnRate() const
+unsigned int	Game::getSpawnRate() const
 {
 	return m_spawnRate;
 }
