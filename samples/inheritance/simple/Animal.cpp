@@ -2,6 +2,7 @@
 
 Animal::Animal()
 {
+	std::cout << "I am animal kind" << std::endl;
 }
 
 Animal::Animal(Animal const & src)

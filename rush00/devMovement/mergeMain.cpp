@@ -4,6 +4,7 @@
 #include "SpaceShip.hpp"
 #include "Enemy.hpp"
 #include "Movement.hpp"
+#include "Menu.hpp"
 #include "Game.hpp"
 #include <string>
 #include <ncurses.h>
@@ -40,6 +41,7 @@ int main()
 	int		createTime = 0;
 	while((ch = getch()) != KEY_F(1))
 	{
+		menu->set_menu(menu->init_menu());
 		if (game->checkCollision() == true)
 		{
 			break ;
@@ -53,8 +55,11 @@ int main()
 		box(menu->get_menu(), 0 , 0);
 
 		newProjectile = ctrl->ft_get_input(ch, d, ship);
-		d->print_obj(d->get_win(), ship->getMovement()->getX(), ship->getMovement()->getY(), 0);
 		
+		d->print_obj(d->get_win(), ship->getMovement()->getX(),
+				ship->getMovement()->getY(), AbstractObject::BOSS);
+		d->print_obj(d->get_win(), ship->getMovement()->getX(),
+				ship->getMovement()->getY(), AbstractObject::SPACESHIP);
 		if (newProjectile != NULL)
 		{
 			game->pushSpaceObject(newProjectile);
@@ -80,14 +85,19 @@ int main()
 				}
 				else
 				{
-					d->print_obj(d->get_win(), spaceObjects[i]->getMovement()->getX(), spaceObjects[i]->getMovement()->getY(), 0);
+					d->print_obj(d->get_win(),
+							spaceObjects[i]->getMovement()->getX(),
+							spaceObjects[i]->getMovement()->getY(),
+							spaceObjects[i]->getType());
 				}
 			}
 		}
+		menu->print_score(game);
 		menu->print_life(ship);
 		wrefresh(d->get_win());
 		wrefresh(menu->get_menu());
 		usleep(100000);
+		menu->destroy_menu(menu->get_menu());
 	}
 	endwin();
 	delete d;
