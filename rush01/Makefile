@@ -1,6 +1,6 @@
 CXX		= g++
 RM		= rm -rf
-NAME	= GKrellM
+NAME	= ft_gkrellm
 HEADER	= ./inc/
 SRCDIR	= ./src/
 OBJDIR	= ./obj/

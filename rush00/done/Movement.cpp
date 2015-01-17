@@ -10,8 +10,8 @@ std::string const Movement::typeDirNames[] =
 	"RIGHT"
 };
 
-# define WIDTH 100
-# define HEIGHT 100
+# define WIDTH 98
+# define HEIGHT 48
 
 Movement::Movement() : 
 	m_x(0), m_y(0), m_speed(0)

@@ -20,8 +20,8 @@ class Game
 		void	setScore(unsigned int const score);
 		void	setSpawnRate(unsigned int const spawnRate);
 		void	setSpaceObjects(AbstractObject **& spaceObjects);
-		unsigned int const	getScore() const;
-		unsigned int const	getSpawnRate() const;
+		unsigned int 	getScore() const;
+		unsigned int 	getSpawnRate() const;
 		AbstractObject		**getSpaceObjects() const;
 
 		bool			checkCollision();
