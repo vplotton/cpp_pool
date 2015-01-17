@@ -5,7 +5,7 @@
 #include <iterator>
 #include <stdexcept>
 
-#define MAX	100000
+#define MAX	100
 
 int		main()
 {
@@ -22,19 +22,10 @@ int		main()
 	srand(time(NULL));
 	std::vector<int>	filler(MAX);
 	std::generate(filler.begin(), filler.end(), rand);
-
-
-	int	last = 1;
-	for (unsigned int i = 0 ; i < MAX ; ++i)
-	{
-		srand(time(NULL) * last);
-		last = rand();
-		filler.push_back((last % 3 == 0 ? -(last % MAX) : (last % MAX)));
-	}
-	/*
+/*
 	   std::copy(filler.begin(), filler.end(),
 	   		std::ostream_iterator<int>(std::cout, "\n"));
-	   */
+*/
 	Span	span(MAX);
 
 	std::cout << std::endl << "[ empty ]" << std::endl;
