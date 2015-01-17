@@ -8,9 +8,9 @@ template <typename T>
 class Array
 {
 	public:
-		inline explicit Array() : m_size(0), m_array(NULL) {}
+		inline explicit Array<T>() : m_size(0), m_array(NULL) {}
 
-		inline explicit Array(unsigned int size) :
+		inline explicit Array<T>(unsigned int size) :
 			m_size(size), m_array(new T[m_size])
 	{
 		for (unsigned int i = 0 ; i < size ; ++i)
@@ -19,17 +19,21 @@ class Array
 		}
 	}
 
-		inline explicit Array(Array const & src)
+		inline explicit Array<T>(Array const & src) : m_size(0), m_array(NULL)
 		{
 			*this = src;
 		}
 
-		inline ~Array() { delete [] m_array; }
+		inline ~Array<T>() { delete [] m_array; }
 
 		inline Array    &operator=(Array const & rhs)
 		{
 			if (this != &rhs)
 			{
+				if (m_size)
+				{
+					delete m_array;
+				}
 				m_size = rhs.m_size;
 				m_array = new T[m_size];
 				for (unsigned int i = 0 ; i < m_size ; ++i)

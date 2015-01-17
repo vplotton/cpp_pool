@@ -2,6 +2,8 @@
 
 static int	count = 0;
 
+/* template to do */
+
 template <typename T, typename U>
 void	iter(T * const & array, unsigned int size, U (*ft)(T &))
 {
@@ -10,6 +12,8 @@ void	iter(T * const & array, unsigned int size, U (*ft)(T &))
 		ft(array[i]);
 	}
 }
+
+/* test  functions && test functions templates */
 
 void	ft_increment(int &a)
 {
@@ -62,6 +66,7 @@ std::string	ft_reverse(std::string & s)
 	return s;
 }
 
+/* test main */
 
 int		main()
 {

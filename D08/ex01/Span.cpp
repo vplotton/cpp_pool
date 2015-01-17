@@ -92,7 +92,7 @@ unsigned int	Span::longestSpan()
 		throw (std::runtime_error("Span::NotEnoughElements"));
 	}
 
-	return (std::abs(m_store.back() - m_store.front()));
+	return (m_store.back() - m_store.front());
 }
 
 std::ostream & operator<<(std::ostream & o, Span const & i)
