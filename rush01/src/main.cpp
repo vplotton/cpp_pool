@@ -26,6 +26,91 @@ uint64_t get_cpu_freq(void)
 	return freq;
 }
 
+#include <mach/mach_init.h>
+#include <mach/mach_error.h>
+#include <mach/mach_host.h>
+#include <mach/vm_map.h>
+
+static unsigned long long _previousTotalTicks = 0;
+static unsigned long long _previousIdleTicks = 0;
+
+float CalculateCPULoad(unsigned long long idleTicks, unsigned long long totalTicks);
+
+float GetCPULoad()
+{
+	host_cpu_load_info_data_t cpuinfo;
+	mach_msg_type_number_t count = HOST_CPU_LOAD_INFO_COUNT;
+	if (host_statistics(mach_host_self(),
+				HOST_CPU_LOAD_INFO,
+				(host_info_t)&cpuinfo, &count) == KERN_SUCCESS)
+	{
+		unsigned long long totalTicks = 0;
+		for(int i=0; i<CPU_STATE_MAX; i++)
+		{
+			totalTicks += cpuinfo.cpu_ticks[i];
+		}
+		return (CalculateCPULoad(cpuinfo.cpu_ticks[CPU_STATE_IDLE],	totalTicks));
+	}
+	else return -1.0f;
+}
+
+float CalculateCPULoad(unsigned long long idleTicks, unsigned long long totalTicks)
+{
+	unsigned long long totalTicksSinceLastTime = totalTicks-_previousTotalTicks;
+	unsigned long long idleTicksSinceLastTime  = idleTicks-_previousIdleTicks;
+	float ret = 1.0f - ((totalTicksSinceLastTime > 0) ?
+				((float)idleTicksSinceLastTime) / totalTicksSinceLastTime : 0);
+	_previousTotalTicks = totalTicks;
+	_previousIdleTicks  = idleTicks;
+	return ret;
+}
+
+struct AvgBps
+{
+	double rate_;            /* The average rate */
+	double last_;            /* Accumulates bytes added until average is computed */
+	time_t prev_;            /* Time of previous update */
+	AvgBps () :
+		rate_(0), last_(0), prev_(time(0))
+	{
+	}
+
+	void add (unsigned bytes)
+	{
+		time_t now = time(0);
+		if (now - prev_ < 60)
+		{
+			/* The update is within the last minute */
+
+			last_ += bytes;		/* Accumulate bytes into last */
+			if (now > prev_)
+			{
+				/* More than a second elapsed from previous
+				* exponential moving average
+				 * the more time that has elapsed between updates, the more
+				 * weight is assigned for the accumulated bytes */
+
+				double alpha = (now - prev_)/60.0;
+				rate_ = alpha * last_ + (1 - alpha) * rate_;
+				last_ = 0;            /* Reset last_ (it has been averaged in) */
+				prev_ = now;          /* Update prev_ to current time */
+			}
+		}
+		else
+		{                      /* The update is longer than a minute ago */
+		}
+		rate_ = bytes;            /* Current update is average rate */
+		last_ = 0;                /* Reset last_ */
+		prev_ = now;              /* Update prev_ */
+	}
+
+	double rate ()
+	{
+		add(0);			/* Compute rate by doing an update of 0 bytes */
+		return rate_;	/* Return computed rate */
+	}
+};
+
 int		main()
 {
 	std::cout << "Welcome to GKrellM" << std::endl;
@@ -96,7 +181,7 @@ int		main()
 
 	std::cout << "Ram available: " << physical_memory / 1000000 << "MB" << std::endl;
 
-	// RAM Currently Used
+	/* RAM Currently Used */
 	vm_size_t page_size;
 	mach_port_t mach_port;
 	mach_msg_type_number_t count;
@@ -116,6 +201,29 @@ int		main()
 		std::cout << "Free memory: " << free_memory / 1000000 << "MB" << std::endl;
 		std::cout << "Used memory: " << used_memory / 1000000 << "MB" << std::endl;
 	}
-	
+
+
+	AvgBps	avgBps;
+	int		countNb = 0;
+	/*
+	int skt;
+	int	sndsize;
+	int sockbufsize = 0;
+	sizeInt = sizeof(int); 
+	*/
+	while (++countNb < 100)
+	{
+		std::cout << "CPU load: " << GetCPULoad() * 100.0 << "%" << std::endl;
+		/*
+		err = getsockopt(skt, SOL_SOCKET, SO_RCVBUF, 
+				(char *)&sockbufsize, &sizeInt);
+		avgBps.add(static_sizeInt);
+		std::cout << "Avg Bps: " << avgBps.rate_ << std::endl;
+		*/
+		sleep(1);
+	}
+
+
+
 	return 0;
 }

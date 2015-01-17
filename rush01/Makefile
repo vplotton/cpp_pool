@@ -23,7 +23,7 @@ clean:
 		@echo "Objects removed successfully"
 
 fclean:		clean
-		$(RM) $(NAME)
+		@$(RM) $(NAME)
 		@echo "$(NAME) removed successfully"
 
 re:		fclean all
