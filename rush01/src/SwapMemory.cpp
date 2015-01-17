@@ -1,9 +1,5 @@
 #include "modules/SwapMemory.hpp"
-#include <mach/mach.h>
-#include <sys/param.h>
 #include <sys/mount.h>
-#include <sys/stat.h>
-#include <sys/types.h>
 #include <sys/sysctl.h>
 
 SwapMemory::SwapMemory() : AbstractModule("SwapMemoryModule", "B")
