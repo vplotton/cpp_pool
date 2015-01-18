@@ -1,16 +1,15 @@
-#include "SysInfo.hpp"
-#include <unistd.h>
+#include "Info.hpp"
 #include <iostream>
 
 int		main()
 {
-	SysInfo	sysInfo;
+	Info<unsigned long long>	info("name", EInfo::BYTES);
 
-	std::cout << "Sysname: " << sysInfo.getSysName() << std::endl;
-	std::cout << "Nodename: " << sysInfo.getNodeName() << std::endl;
-	std::cout << "Release: " << sysInfo.getRelease() << std::endl;
-	std::cout << "Version: " << sysInfo.getVersion() << std::endl;
-	std::cout << "Machine: " << sysInfo.getMachine() << std::endl;
+	info.setInfo(1230123);
+
+	std::cout << info.getName() << std::endl;
+	std::cout << info.getInfo() << std::endl;
+	std::cout << info.convert(info.getInfo()) << std::endl;
 
 	return 0;
 }
