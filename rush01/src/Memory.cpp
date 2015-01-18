@@ -65,13 +65,16 @@ void	Memory::getMemoryValues(long long &free, long long &used)
 	}
 }
 
-Memory::Memory(Memory const & src) : AbstractModule("Memory Copy")
+Memory::Memory(Memory const & src) :
+	AbstractModule("Memory Copy")
 {
-	(void)src;
+	*this = src;
 }
 
 Memory	&Memory::operator=(Memory const & rhs)
 {
-	(void)rhs;
+	if (this != &rhs)
+	{
+	}
 	return *this;
 }

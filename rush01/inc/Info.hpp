@@ -12,7 +12,7 @@ std::string const unitSuffix[] =
 	"o",
 	"B",
 	"Hz",
-	"%",
+	"%%",
 };
 
 std::string const unitPrefix[] =

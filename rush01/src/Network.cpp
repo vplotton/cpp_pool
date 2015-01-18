@@ -1,12 +1,18 @@
 #include "modules/Network.hpp"
 
+#include <sys/types.h>
 #include <sys/sysctl.h>
-#include <netinet/in.h>
-#include <net/if.h>
-#include <net/route.h>
+
+#include <stdlib.h>
+
+#include <sys/socketvar.h>
+#include <netinet/ip.h>
+#include <netinet/ip_var.h>
+#include <netinet/tcp.h>
+#include <netinet/tcp_var.h>
 
 Network::Network() :
-	AbstractModule("Network")
+	AbstractModule("Network"), m_previousTotalInput(0), m_previousTotalOutput(0)
 {
 }
 
@@ -22,55 +28,49 @@ void	Network::updateData()
 	getInOutput(inBytes, outBytes);
 	m_infos.at(0).setInfo(inBytes);
 	m_infos.at(1).setInfo(outBytes);
+	m_infos.at(2).setInfo(calculateNetworkInput(inBytes) * 1024);
+	m_infos.at(3).setInfo(calculateNetworkOutput(outBytes) * 1024);
 }
 
 void	Network::initData()
 {
-	m_infos.push_back(Info("In", EInfo::BYTES));
-	m_infos.push_back(Info("Out", EInfo::BYTES));
+	m_infos.push_back(Info("Packets In", EInfo::OCTET));
+	m_infos.push_back(Info("Packets Out", EInfo::OCTET));
+	m_infos.push_back(Info("UpStream", EInfo::BYTES));
+	m_infos.push_back(Info("DownStream", EInfo::BYTES));
 
 	updateData();
 }
 
 void	Network::getInOutput(unsigned long long &in, unsigned long long &out)
 {
-	int mib[] = {
-		CTL_NET,
-		PF_ROUTE,
-		0,
-		0,
-		NET_RT_IFLIST2,
-		0
-	};
-	size_t len;
-	if (sysctl(mib, 6, NULL, &len, NULL, 0) < 0)
-	{
-		/* handle error */
-	}
-	char *buf = (char *)malloc(len);
-	if (sysctl(mib, 6, buf, &len, NULL, 0) < 0)
-	{
-		/* handle error */
-	}
+	void *oldp = reinterpret_cast<void*>(new int[256]);
+	size_t oldlen = sizeof(struct ipstat);
+	size_t	newlen = 0;
+	void * newp = NULL;
 
-	char *lim = buf + len;
-	char *next = NULL;
-	u_int64_t totalibytes = 0;
-	u_int64_t totalobytes = 0;
-	for (next = buf; next < lim; )
-	{
-		struct if_msghdr *ifm = (struct if_msghdr *)next;
-		next += ifm->ifm_msglen;
-		
-		if (ifm->ifm_type == RTM_IFINFO2)
-		{
-			struct if_msghdr2 *if2m = (struct if_msghdr2 *)ifm;
-			totalibytes += if2m->ifm_data.ifi_ibytes;
-			totalobytes += if2m->ifm_data.ifi_obytes;
-		}
-	}
-	in = totalibytes;
-	out = totalobytes;
+	sysctlbyname("net.inet.ip.stats", oldp, &oldlen, newp, newlen);
+
+	struct ipstat * g = (struct ipstat *) oldp;
+
+	in = g->ips_total * 8;
+	out = g->ips_localout * 8;
+}
+
+unsigned long long	Network::calculateNetworkInput(unsigned long long recvTotal)
+{
+	unsigned long long recvSinceLastTime = recvTotal - m_previousTotalInput;
+
+	m_previousTotalInput = recvTotal;
+	return recvSinceLastTime;
+}
+
+unsigned long long  Network::calculateNetworkOutput(unsigned long long sendTotal)
+{
+	unsigned long long	sendSinceLastTime = sendTotal - m_previousTotalOutput;
+
+	m_previousTotalOutput = sendTotal;
+	return sendSinceLastTime;
 }
 
 Network::Network(Network const & src) :

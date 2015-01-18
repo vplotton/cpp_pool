@@ -53,7 +53,6 @@ int		main()
 	modules = factory.getModules();
 
 	d->fill_pos();	
-//	d->makeBox();
 	erase();
 
 	while((ch = getch()) != KEY_F(1))
@@ -76,7 +75,6 @@ int		main()
 			}
 			Display::begin = 0;
 		}
-		//std::cout << "============" << std::endl;
 		d->printBox();
 		sleep(1);
 		for(int j = 0; j < 10; j++)

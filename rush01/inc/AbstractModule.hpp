@@ -8,7 +8,7 @@ class AbstractModule : public InterfaceModule
 	public:
 		enum Type
 		{
-			CPU,
+			CPU = 0,
 			MEMORY,
 			SWAPMEMORY,
 			NETWORK,

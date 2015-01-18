@@ -41,11 +41,13 @@ AbstractModule::AbstractModule()
 
 AbstractModule::AbstractModule(AbstractModule const & src)
 {
-	(void)src;
+	*this = src;
 }
 
 AbstractModule &AbstractModule::operator=(AbstractModule const & rhs)
 {
-	(void)rhs;
+	if (this != &rhs)
+	{
+	}
 	return (*this);
 }

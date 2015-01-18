@@ -8,7 +8,8 @@
 #include <map>
 #include <vector>
 #include "Box.hpp"
-//#include "Info.hpp"
+#include "Info.hpp"
+#include "AbstractModule.hpp"
 
 class Display
 {
@@ -27,7 +28,7 @@ class Display
 		void		printBox();
 		static int	cpt;
 //		void    fillBox(std::vector<Info> infos, unsigned int index);
-		void    fillBox(unsigned int index);
+		void    fillBox(AbstractModule::Type, std::vector<Info>::iterator it);
 			std::list<int>  list;
 	private:
 					WINDOW* _win;
