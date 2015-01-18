@@ -15,8 +15,8 @@ std::map<AbstractModule::Type, AbstractModule*>	ModuleFactory::getModules() cons
 
 void	ModuleFactory::addModule(AbstractModule::Type type, AbstractModule *module)
 {
-	m_modules.insert(std::make_pair<
-				AbstractModule::Type, AbstractModule*>(type, module));
+	m_modules.insert(std::make_pair
+			<AbstractModule::Type, AbstractModule*>(type, module));
 
 	m_modules.at(type)->initData();
 }
