@@ -7,6 +7,7 @@ OBJDIR	= ./obj/
 CFLAGS	= -Wall -Wextra -Werror -I$(HEADER)
 SRC			= $(SRCDIR)main.cpp				\
 			  $(SRCDIR)Cpu.cpp				\
+			  $(SRCDIR)Info.cpp				\
 			  $(SRCDIR)User.cpp				\
 			  $(SRCDIR)Clock.cpp			\
 			  $(SRCDIR)OSInfo.cpp			\

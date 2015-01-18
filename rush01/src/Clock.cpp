@@ -1,8 +1,5 @@
 #include "modules/Clock.hpp"
 
-#include <iostream>
-#include <ctime>
-#include <string>
 
 Clock::Clock() :
 	AbstractModule("Clock")
@@ -31,26 +28,14 @@ void	Clock::initData()
 	updateData();
 }
 
-void	Clock::getDatetime(std::string &date, std::string &time)
+void	Clock::getDatetime(std::string &date, std::string &hour)
 {
-	(void)date;
-	(void)time;
-	/*
 	time_t now = time(0);
-	tm *ltm = localtime(&now);
-	std::stringstream	stream;
 
-	stream << 1900 + ltm->tm_year
-		<< " " << 1 + ltm->tm_mon
-		<< " " <<  ltm->tm_mday;
-	date = stream.str();
-	stream.clear();
+	std::string tmp = ctime(&now);
 
-	stream << 1 + ltm->tm_hour
-		<< ":" << 1 + ltm->tm_min
-		<< ":" << 1 + ltm->tm_sec;
-	time = stream.str();
-	*/
+	date = tmp.substr(0, 10) + " " + tmp.substr(20, 4);
+	hour = tmp.substr(11, 8);
 }
 
 Clock::Clock(Clock const & src) :

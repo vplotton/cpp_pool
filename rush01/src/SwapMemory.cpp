@@ -18,9 +18,9 @@ void	SwapMemory::updateData()
 
 void	SwapMemory::initData()
 {
-	m_infos.push_back(Info("Total", EInfo::BYTES));
+	m_infos.push_back(Info("Total", EInfo::OCTET));
 	m_infos.at(0).setInfo(getTotalSwapMemory());
-	m_infos.push_back(Info("Used", EInfo::BYTES));
+	m_infos.push_back(Info("Used", EInfo::OCTET));
 
 	updateData();
 }

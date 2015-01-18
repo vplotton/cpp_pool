@@ -24,10 +24,10 @@ void	Memory::updateData()
 
 void	Memory::initData()
 {
-	m_infos.push_back(Info("Total", EInfo::BYTES));
+	m_infos.push_back(Info("Total", EInfo::OCTET));
 	m_infos.at(0).setInfo(getMaxMemory());
-	m_infos.push_back(Info("Free", EInfo::BYTES));
-	m_infos.push_back(Info("Used", EInfo::BYTES));
+	m_infos.push_back(Info("Free", EInfo::OCTET));
+	m_infos.push_back(Info("Used", EInfo::OCTET));
 
 	updateData();
 }

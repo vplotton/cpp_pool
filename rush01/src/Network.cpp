@@ -57,10 +57,13 @@ void	Network::getInOutput(unsigned long long &in, unsigned long long &out)
 	char *next = NULL;
 	u_int64_t totalibytes = 0;
 	u_int64_t totalobytes = 0;
-	for (next = buf; next < lim; ) {
+	for (next = buf; next < lim; )
+	{
 		struct if_msghdr *ifm = (struct if_msghdr *)next;
 		next += ifm->ifm_msglen;
-		if (ifm->ifm_type == RTM_IFINFO2) {
+		
+		if (ifm->ifm_type == RTM_IFINFO2)
+		{
 			struct if_msghdr2 *if2m = (struct if_msghdr2 *)ifm;
 			totalibytes += if2m->ifm_data.ifi_ibytes;
 			totalobytes += if2m->ifm_data.ifi_obytes;
