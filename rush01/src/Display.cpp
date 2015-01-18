@@ -6,7 +6,7 @@
 /*   By: cycharbo <cycharbo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/01/18 19:03:10 by cycharbo          #+#    #+#             */
-/*   Updated: 2015/01/18 20:40:17 by cycharbo         ###   ########.fr       */
+/*   Updated: 2015/01/18 21:53:08 by cycharbo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -255,7 +255,7 @@ void	Display::printBox(void)
 	}
 }
 
-	void	Display::fillBox(AbstractModule::Type type, std::vector<Info>::iterator it ,int i, std::string titre)
+void	Display::fillBox(AbstractModule::Type type, std::vector<Info>::iterator it ,int i, std::string titre)
 {
 	if (check[type] == false )
 	{
@@ -265,8 +265,16 @@ void	Display::printBox(void)
 		}
 		mvwprintw(tab[type]->getWinBox(), tab[type]->getY() + 3 + i,  3 , it->getName().c_str());
 		mvwprintw(tab[type]->getWinBox(), tab[type]->getY()+ 3 +  i, it->getName().size() + 5, it->convert().c_str());
-				i++;
-	   }
+		i++;
+	}
+	else
+	{
+		wrefresh(_win);
+		wborder(_win, ' ', ' ', ' ',' ',' ',' ',' ',' ');
+		wrefresh(_win);
+		delwin(_win);
+		erase();
+	}
 }
 
 Box *& Display::getWindows(int i)
@@ -277,4 +285,10 @@ Box *& Display::getWindows(int i)
 bool Display::getCheck(int nb)
 {
 	return (check[nb]);
+}
+
+
+void Display::setCheck(int i, bool b)
+{
+	check[i] = b;
 }
