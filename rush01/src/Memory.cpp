@@ -4,7 +4,7 @@
 #include <sys/sysctl.h>
 
 Memory::Memory():
-	AbstractModule("Memory Module")
+	AbstractModule("Memory")
 {
 }
 

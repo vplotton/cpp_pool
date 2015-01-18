@@ -9,11 +9,18 @@ class AbstractModule : public InterfaceModule
 		enum Type
 		{
 			CPU,
-			MEMORY
+			MEMORY,
+			SWAPMEMORY,
+			NETWORK,
+			OSINFO,
+			CLOCK,
+			USER
 		};
 		AbstractModule(std::string const &);
 		virtual ~AbstractModule();
 
+		void						enableModule();
+		void						disableModule();
 		bool						getActivated() const;
 		std::string const &			getModuleName() const;
 		std::vector<Info> const &	getInfos() const;

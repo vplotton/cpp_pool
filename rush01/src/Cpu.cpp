@@ -8,7 +8,8 @@
 #include <sys/sysctl.h>
 
 
-Cpu::Cpu() : AbstractModule("Cpu - Module"),
+Cpu::Cpu() :
+	AbstractModule("Cpu"),
 	m_previousTotalTicks(0), m_previousIdleTicks(0)
 {
 }
@@ -107,3 +108,16 @@ float	Cpu::calculateCPULoad(unsigned long long idleTicks, unsigned long long tot
 	return ret;
 }
 
+Cpu::Cpu(Cpu const & src) :
+	AbstractModule("Cpu")
+{
+	(void)src;
+}
+
+Cpu	&Cpu::operator=(Cpu const & rhs)
+{
+	if (this != &rhs)
+	{
+	}
+	return *this;
+}

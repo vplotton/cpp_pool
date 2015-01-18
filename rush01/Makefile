@@ -5,9 +5,15 @@ HEADER	= ./inc/
 SRCDIR	= ./src/
 OBJDIR	= ./obj/
 CFLAGS	= -Wall -Wextra -Werror -I$(HEADER)
-SRC			= $(SRCDIR)main.cpp		\
-			  $(SRCDIR)Cpu.cpp		\
-			  $(SRCDIR)Memory.cpp		\
+SRC			= $(SRCDIR)main.cpp				\
+			  $(SRCDIR)Cpu.cpp				\
+			  $(SRCDIR)User.cpp				\
+			  $(SRCDIR)Clock.cpp			\
+			  $(SRCDIR)OSInfo.cpp			\
+			  $(SRCDIR)Memory.cpp			\
+			  $(SRCDIR)Network.cpp			\
+			  $(SRCDIR)SwapMemory.cpp		\
+			  $(SRCDIR)ModuleFactory.cpp	\
 			  $(SRCDIR)AbstractModule.cpp
 OBJ			= $(addprefix $(OBJDIR),$(notdir $(SRC:.cpp=.o)))
 

@@ -11,6 +11,13 @@ class SwapMemory : public AbstractModule
 
 		virtual void updateData();
 		virtual void initData();
+
+	private:
+		unsigned long long	getSwapUsage();
+		uint64_t			getTotalSwapMemory();
+		SwapMemory(SwapMemory const &);
+		SwapMemory	&operator=(SwapMemory const &);
+
 };
 
 #endif /* !SWAPMEMORY_HPP */

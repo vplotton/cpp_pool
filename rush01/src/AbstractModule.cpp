@@ -2,12 +2,22 @@
 #include <sstream>
 
 AbstractModule::AbstractModule(std::string const & moduleName) :
-	m_moduleName(moduleName)
+	m_moduleName(moduleName), m_isActivated(true)
 {
 }
 
 AbstractModule::~AbstractModule()
 {
+}
+
+void						AbstractModule::enableModule()
+{
+	m_isActivated = true;
+}
+
+void						AbstractModule::disableModule()
+{
+	m_isActivated = false;
 }
 
 bool						AbstractModule::getActivated() const

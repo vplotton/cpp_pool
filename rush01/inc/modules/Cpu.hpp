@@ -22,6 +22,9 @@ class Cpu : public AbstractModule
 		float	calculateCPULoad(unsigned long long idleTicks,
 					unsigned long long totalTicks);
 		int		getCoreNumber();
+
+		Cpu(Cpu const &);
+		Cpu	&operator=(Cpu const &);
 };
 
 #endif /* !CPU_HPP */

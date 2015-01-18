@@ -1,32 +1,42 @@
 #include "modules/Cpu.hpp"
+#include "modules/user.hpp"
+#include "modules/Clock.hpp"
+#include "modules/OSInfo.hpp"
 #include "modules/Memory.hpp"
+#include "modules/Network.hpp"
+#include "modules/SwapMemory.hpp"
+#include "ModuleFactory.hpp"
 
 #include <iostream>
 #include <vector>
 #include <map>
 #include <unistd.h>
 
+void	initModules(ModuleFactory &factory)
+{
+	factory.addModule(AbstractModule::CPU, new Cpu());
+	factory.addModule(AbstractModule::MEMORY, new Memory());
+	factory.addModule(AbstractModule::SWAPMEMORY, new SwapMemory());
+	factory.addModule(AbstractModule::CLOCK, new Clock());
+	factory.addModule(AbstractModule::USER, new User());
+	factory.addModule(AbstractModule::OSINFO, new OSInfo());
+	factory.addModule(AbstractModule::NETWORK, new Network());
+}
+
 int		main()
 {
-	std::map<AbstractModule::Type, AbstractModule*>	myApps;
+	ModuleFactory	factory;
 
+	initModules(factory);
 
-	myApps.insert(
-			std::make_pair<AbstractModule::Type, AbstractModule*>(
-				AbstractModule::CPU, new Cpu()));
-
-	myApps.insert(
-			std::make_pair<AbstractModule::Type, AbstractModule*>(
-				AbstractModule::MEMORY, new Memory()));
-
-	myApps.at(AbstractModule::CPU)->initData();
-	myApps.at(AbstractModule::MEMORY)->initData();
 	int		count = 0;
 
+	std::map<AbstractModule::Type, AbstractModule*> modules;
+	modules = factory.getModules();
 	while (++count < 70)
 	{
 		for (std::map<AbstractModule::Type, AbstractModule*>::iterator itMap =
-				myApps.begin() ; itMap != myApps.end() ; ++itMap)
+				modules.begin() ; itMap != modules.end() ; ++itMap)
 		{
 			itMap->second->updateData();
 			std::vector<Info>	infos = itMap->second->getInfos();
