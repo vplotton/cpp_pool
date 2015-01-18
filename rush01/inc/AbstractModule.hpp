@@ -14,8 +14,8 @@ class AbstractModule : public InterfaceModule
 		std::string const &	getName();
 
 		unsigned int	retrievePercentage();
-		unsigned int	retrieveTotalAmount();
-		unsigned int	retrieveCurrentAmount();
+		unsigned long long	retrieveTotalAmount();
+		unsigned long long	retrieveCurrentAmount();
 		std::string	convertToReadable();
 
 		virtual void	updateData() = 0;
@@ -24,8 +24,8 @@ class AbstractModule : public InterfaceModule
 	protected:
 		std::string const	m_name;
 		std::string const	m_unitName;
-		unsigned int		m_amount;
-		unsigned int		m_totalAmount;
+		unsigned long long	m_amount;
+		unsigned long long	m_totalAmount;
 
 		AbstractModule();
 		AbstractModule(AbstractModule const &);

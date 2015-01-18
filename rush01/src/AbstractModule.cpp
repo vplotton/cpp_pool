@@ -34,12 +34,12 @@ unsigned int	AbstractModule::retrievePercentage()
 	return (m_amount / m_totalAmount);
 }
 
-unsigned int	AbstractModule::retrieveCurrentAmount()
+unsigned long long	AbstractModule::retrieveCurrentAmount()
 {
 	return m_amount;
 }
 
-unsigned int	AbstractModule::retrieveTotalAmount()
+unsigned long long	AbstractModule::retrieveTotalAmount()
 {
 	return m_totalAmount;
 }
@@ -47,8 +47,8 @@ unsigned int	AbstractModule::retrieveTotalAmount()
 std::string AbstractModule::convertToReadable()
 {
 	unsigned int		count = 0;
-	unsigned int 		value = m_amount;
-	std::stringstream	output;
+	unsigned long long		value = m_amount;
+	std::stringstream		output;
 
 	while (value > 999)
 	{

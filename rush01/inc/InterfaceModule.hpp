@@ -9,8 +9,8 @@ class InterfaceModule
 		virtual ~InterfaceModule() {}
 
 		virtual unsigned int	retrievePercentage() = 0;
-		virtual unsigned int	retrieveTotalAmount() = 0;
-		virtual unsigned int	retrieveCurrentAmount() = 0;
+		virtual unsigned long long	retrieveTotalAmount() = 0;
+		virtual unsigned long long	retrieveCurrentAmount() = 0;
 		virtual std::string	convertToReadable() = 0;
 };
 

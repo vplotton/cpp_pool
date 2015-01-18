@@ -4,7 +4,11 @@
 #include <iostream>
 #include <ncurses.h>
 #include <list>
-#include <algorithm>
+#include <string>
+#include <map>
+#include <vector>
+#include "Box.hpp"
+
 
 class Display
 {
@@ -17,11 +21,17 @@ class Display
 		void 		set_win(WINDOW *win);
 		void		destroy_win(WINDOW * win);
 		WINDOW*  	ft_init_win(void);
-//		void		print_obj(WINDOW *win,int x, int y, int type);
-
+		void		printGraph(WINDOW *win);
+		void		fill_pos();
+		void		makeBox();
+		void		printBox();
+		static int	cpt;
+		void    fillBox();
+			std::list<int>  list;
 	private:
 					WINDOW* _win;
-					std::list<int> list;
+					std::map<int,int > _pos;
+					Box		*tab[10];
 };
 
 

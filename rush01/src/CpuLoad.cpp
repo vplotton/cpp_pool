@@ -6,7 +6,7 @@
 
 
 CpuLoad::CpuLoad() : AbstractModule("CpuLoadModule", "%"),
-	m_prevsTotalTicks(0), m_previousIdleTicks(0)
+	m_previousTotalTicks(0), m_previousIdleTicks(0)
 {
 }
 
@@ -18,7 +18,7 @@ void	CpuLoad::updateData()
 {
 	float	cpuLoad = getCPULoad();
 	
-	m_amount = static_cast<unsigned int>(cpuLoad * 100);
+	m_amount = static_cast<unsigned long long>(cpuLoad * 100);
 }
 
 void	CpuLoad::initData()
@@ -40,10 +40,10 @@ float	CpuLoad::getCPULoad()
 		for(int i = 0 ; i < CPU_STATE_MAX ; i++)
 		{   
 			totalTicks += cpuinfo.cpu_ticks[i];
-		}   
-		return (CalculateCPULoad(cpuinfo.cpu_ticks[CPU_STATE_IDLE], totalTicks));
+		}
+		return (calculateCPULoad(cpuinfo.cpu_ticks[CPU_STATE_IDLE], totalTicks));
 	}   
-	else return -1.0f;
+	return -1.0f;
 }
 
 float	CpuLoad::calculateCPULoad(unsigned long long idleTicks, unsigned long long totalTicks)
