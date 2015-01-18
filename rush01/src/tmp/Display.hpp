@@ -8,7 +8,7 @@
 #include <map>
 #include <vector>
 #include "Box.hpp"
-
+//#include "Info.hpp"
 
 class Display
 {
@@ -26,7 +26,8 @@ class Display
 		void		makeBox();
 		void		printBox();
 		static int	cpt;
-		void    fillBox();
+//		void    fillBox(std::vector<Info> infos, unsigned int index);
+		void    fillBox(unsigned int index);
 			std::list<int>  list;
 	private:
 					WINDOW* _win;

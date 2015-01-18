@@ -4,6 +4,7 @@
 #include <map>
 #include <vector>
 #include <unistd.h>
+#include "Info.hpp"
 
 int Display::cpt = 0;
 Display::Display()
@@ -156,21 +157,29 @@ void	Display::makeBox()
 
 void	Display::printBox(void)
 {
+	int x = 0;
+	int y = 1;
 	for(int i = 0; i < cpt; i++)
 	{
-		for(std::map<std::string,std::string> it = tab[i]->getMapInfo.begin(); it != tab[i]->getMapInfo.end(); ++it)
+		std::map<std::string, std::string> map = tab[i]->getMapInfo();
+		for(std::map<std::string,std::string>::iterator it = map.begin(); it != map.end(); ++it)
 		{
-			
+			mvwprintw(tab[i]->_box, y, 
 		}
 		wrefresh(tab[i]->getWinBox());
 	}
 }
 
-void	Display::fillBox()
+void	Display::fillBox(unsigned int index)
 {
 
-	for(int i = 0; i < cpt; i++)
+	tab[index]->setText("titre", "texte");
+	tab[index]->setText("titre", "texte");		
+	tab[index]->setText("titre", "texte");
+
+	/*
+	for(std::vector<Info>::iterator it = infos.begin() ; infos.end() ; ++it)
 	{
-			tab[i]->setText( "titre", "texteeeee"); 
-	}
+		tab[index]->setText(it->getName(), it->convert(it->getInfo())); 
+	}*/
 } 
