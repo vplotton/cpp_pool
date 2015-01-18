@@ -2,30 +2,29 @@
 # define ABSTRACTMODULE
 
 # include "InterfaceModule.hpp"
-# include <vector>
 
 class AbstractModule : public InterfaceModule
 {
 	public:
-		AbstractModule(std::string const &, std::string const & unitName);
-		~AbstractModule();
+		enum Type
+		{
+			CPU,
+			MEMORY
+		};
+		AbstractModule(std::string const &);
+		virtual ~AbstractModule();
 
-		std::string const &	getUnitName();
-		std::string const &	getName();
-
-		unsigned int	retrievePercentage();
-		unsigned long long	retrieveTotalAmount();
-		unsigned long long	retrieveCurrentAmount();
-		std::string	convertToReadable();
+		bool						getActivated() const;
+		std::string const &			getModuleName() const;
+		std::vector<Info> const &	getInfos() const;
 
 		virtual void	updateData() = 0;
 		virtual void	initData() = 0;
 
 	protected:
-		std::string const	m_name;
-		std::string const	m_unitName;
-		unsigned long long	m_amount;
-		unsigned long long	m_totalAmount;
+		std::vector<Info>	m_infos;
+		std::string const	m_moduleName;
+		bool				m_isActivated;
 
 		AbstractModule();
 		AbstractModule(AbstractModule const &);

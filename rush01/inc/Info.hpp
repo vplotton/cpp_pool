@@ -1,8 +1,10 @@
 #ifndef INFO_HPP
 # define INFO_HPP
 
+#include <cstdlib>
 #include <string>
 #include <sstream>
+#include <iostream>
 
 std::string const unitSuffix[] =
 {
@@ -21,7 +23,6 @@ std::string const unitPrefix[] =
 	"T"
 };
 
-
 namespace EInfo {
 	enum Type
 	{
@@ -32,7 +33,6 @@ namespace EInfo {
 	};
 };
 
-template <typename T = std::string>
 class Info
 {
 	public:
@@ -40,6 +40,17 @@ class Info
 			m_name(name), m_type(type)
 	{
 	}
+		Info(Info const & src) :
+			m_name(src.getName()), m_type(src.getType()), m_info(src.getInfo())
+		{
+			*this = src;
+		}
+
+		Info    &operator=(Info const & rhs)
+		{
+			(void)rhs;
+			return *this;
+		}
 		~Info() {}
 
 		std::string const & getName() const
@@ -47,22 +58,34 @@ class Info
 			return m_name;
 		}
 
-		T const & getInfo() const
+		EInfo::Type const &	getType() const
+		{
+			return m_type;
+		}
+
+		std::string const & getInfo() const
 		{
 			return m_info;
 		}
 
+		template <typename T>
 		void	setInfo(T const & info)
 		{
-			m_info = info;
-		}
-		
-		template <typename Type>
-		std::string const convert(Type const & info)
-		{
-			double                  value = static_cast<double>(info);
-			int                     count = 0;
 			std::stringstream       output;
+
+			output << info;
+			m_info = output.str();
+		}
+
+		std::string const convert()
+		{
+			if (m_type == EInfo::NONE)
+			{
+				return m_info;
+			}
+			double		value = std::atof(m_info.c_str());
+			int			count = 0;
+			std::stringstream	stream;
 
 			while (value > 1000.001)
 			{
@@ -71,38 +94,18 @@ class Info
 				if (count == 4)
 					break ;
 			}
-			output << value << " "
+			stream.clear();
+			stream << value << " "
 				<< (m_type == EInfo::BYTES || m_type == EInfo::HERTZ ?
-				unitPrefix[count] : "")
+						unitPrefix[count] : "")
 				<< unitSuffix[m_type];
-			return output.str();
-		}
-
-		std::string const convert(std::string const & info)
-		{
-			return std::string(info);
+			return stream.str();
 		}
 
 	private:
 		std::string const	m_name;
 		EInfo::Type			m_type;
-		T					m_info;
-
-		Info(Info const & src)
-		{
-			(void)src;
-		}
-		Info	&operator=(Info const & rhs)
-		{
-			(void)rhs;
-			return *this;
-		}
+		std::string			m_info;
 };
-
-template <>
-std::string const Info<std::string>::convert<std::string>(std::string const & info)
-{
-	return std::string(info);
-}
 
 #endif	/* !INFO_HPP */

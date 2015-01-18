@@ -2,7 +2,7 @@
 #include <mach/mach.h>
 #include <sys/sysctl.h>
 
-RamFree::RamFree() : AbstractModule("RamFreeModule", "B")
+RamFree::RamFree() : AbstractModule("RamFreeModule")
 {
 }
 
