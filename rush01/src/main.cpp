@@ -1,26 +1,15 @@
-#include "modules/SwapMemory.hpp"
-#include <unistd.h>
+#include "Info.hpp"
 #include <iostream>
 
 int		main()
 {
-	SwapMemory	swapMemory;
+	Info<unsigned long long>	info("name", EInfo::BYTES);
 
-	swapMemory.initData();
+	info.setInfo(1230123);
 
-	std::cout << "Total amount: " << swapMemory.retrieveTotalAmount() << std::endl;
-	int count = 0;
-	while (++count < 70)
-	{
-		swapMemory.updateData();
+	std::cout << info.getName() << std::endl;
+	std::cout << info.getInfo() << std::endl;
+	std::cout << info.convert(info.getInfo()) << std::endl;
 
-		std::cout << "Percentage: "
-			<< swapMemory.retrievePercentage() << std::endl;
-		std::cout << "Current amount: "
-			<< swapMemory.retrieveCurrentAmount() << std::endl;
-		std::cout << "Final result: "
-			<< swapMemory.convertToReadable() << std::endl;
-		sleep(1);
-	}
 	return 0;
 }
