@@ -10,12 +10,7 @@
 #include <netinet/ip_var.h>
 #include <netinet/tcp.h>
 #include <netinet/tcp_var.h>
-/*
-#include <sys/sysctl.h>
-#include <netinet/in.h>
-#include <net/if.h>
-#include <net/route.h>
-*/
+
 Network::Network() :
 	AbstractModule("Network"), m_previousTotalInput(0), m_previousTotalOutput(0)
 {
@@ -54,9 +49,7 @@ void	Network::getInOutput(unsigned long long &in, unsigned long long &out)
 	size_t	newlen = 0;
 	void * newp = NULL;
 
-	int retval = sysctlbyname("net.inet.ip.stats", oldp, &oldlen, newp, newlen);
-
-	(void)retval;
+	sysctlbyname("net.inet.ip.stats", oldp, &oldlen, newp, newlen);
 
 	struct ipstat * g = (struct ipstat *) oldp;
 

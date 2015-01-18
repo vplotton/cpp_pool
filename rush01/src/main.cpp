@@ -29,12 +29,11 @@ int		main()
 
 	initModules(factory);
 
-	int		count = 0;
-
 	std::map<AbstractModule::Type, AbstractModule*> modules;
 	modules = factory.getModules();
-	while (++count < 70)
+	while (42)
 	{
+		std::cout << "\033\143" << std::endl;
 		for (std::map<AbstractModule::Type, AbstractModule*>::iterator itMap =
 				modules.begin() ; itMap != modules.end() ; ++itMap)
 		{

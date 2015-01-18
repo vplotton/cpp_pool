@@ -56,11 +56,13 @@ uint64_t	SwapMemory::getTotalSwapMemory()
 SwapMemory::SwapMemory(SwapMemory const & src) :
 	AbstractModule("Swap Memory")
 {
-	(void)src;
+	*this = src;
 }
 
 SwapMemory	&SwapMemory::operator=(SwapMemory const & rhs)
 {
-	(void)rhs;
+	if (this != &rhs)
+	{
+	}
 	return *this;
 }

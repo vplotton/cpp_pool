@@ -13,7 +13,9 @@ Info::Info(Info const & src) :
 
 Info    &Info::operator=(Info const & rhs)
 {
-	(void)rhs;
+	if (this != &rhs)
+	{
+	}
 	return *this;
 }
 

@@ -111,7 +111,7 @@ float	Cpu::calculateCPULoad(unsigned long long idleTicks, unsigned long long tot
 Cpu::Cpu(Cpu const & src) :
 	AbstractModule("Cpu")
 {
-	(void)src;
+	*this = src;
 }
 
 Cpu	&Cpu::operator=(Cpu const & rhs)

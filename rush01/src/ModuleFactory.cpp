@@ -23,7 +23,7 @@ void	ModuleFactory::addModule(AbstractModule::Type type, AbstractModule *module)
 
 void	ModuleFactory::removeModule(AbstractModule::Type type)
 {
-	(void)type;
+	static_cast<void>(type);
 	/* should implement this ... */
 }
 
